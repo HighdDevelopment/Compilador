@@ -10,6 +10,10 @@ objects = {"balloons", "chips"}
 
 direction ={"front", "right", "left", "back", "around"}
 
+condiction = {"if", "while", "do", "then", "else", "repeat"}
+
+signs = {":", ";", ",", "(", ")", "[", "]", "|"}
+
 procedure={
     "assignTo",
     "goto",
