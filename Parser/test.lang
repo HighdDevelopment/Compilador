@@ -13,5 +13,5 @@ goWest [ | | i f : canMoveInDir : 1 , west then: [ MoveInDir : 1 ,
 west ] e l s e : nop : ]
 [
 goTo : 3 , 3
-put: cb 2 ,1
+put : cb 2 , 1
 ]
