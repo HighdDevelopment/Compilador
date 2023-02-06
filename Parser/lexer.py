@@ -15,8 +15,15 @@ procedure={
     "moveInDir",
     "jumpToThe",
     "jumpInDir",
-    "nop",
     "VARS",
+    "facing",
+    "canPut",
+    "canPick",
+    "canMoveInDir",
+    "canJumpInDir",
+    "canMoveToThe",
+    "canJumpToThe",
+    "nop",
     ",",
     ";"
 }
