@@ -44,7 +44,8 @@ tokens = [
     "CORIZQ",
     "PLECA",
     "COMA",
-    "DOSPUNTOS"
+    "DOSPUNTOS",
+    "PUNTOCOMA"
 ] + list(reserved.values())
 
 # Reglas de expresiones regulares para los tokens simples
@@ -59,6 +60,7 @@ t_CORIZQ = r"\]"
 t_PLECA = r"\|"
 t_COMA = r","
 t_DOSPUNTOS = r":"
+t_PUNTOCOMA = r";"
 # Un token NUMBER representa un número decimal
 def t_NUMBER(t):
     r'\d+'
