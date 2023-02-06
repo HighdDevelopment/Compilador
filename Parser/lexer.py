@@ -15,7 +15,6 @@ loop = {"while", "do"}
 
 repeat = {"repeat"}
 
-signs = {":;,()][|"}
 
 procedure={
     "assignTo",
@@ -25,8 +24,8 @@ procedure={
     "face",
     "put",
     "pick",
-    "moveToThe",
-    "moveInDir",
+    "MoveToThe",
+    "MoveInDir",
     "jumpToThe",
     "jumpInDir",
     "nop"}
@@ -83,11 +82,9 @@ def abrir_archivo(filename):
             elif token in commands:
                 lexico.append(f"COMMANDS({token})")
                 token = ""
-
             elif token in loop:
                 lexico.append(f"LOOP({token})")
                 token = ""            
-
             elif token in cardinals:
                 lexico.append(f"CARDINALS({token})")
                 token = ""                
@@ -102,9 +99,6 @@ def abrir_archivo(filename):
                 token = ""
             elif token in repeat:
                 lexico.append(f"REPEAT({token})")
-                token = ""
-            elif token in signs:
-                lexico.append(f"SIGNS({token})")
                 token = ""
             elif token in condition:  
                 lexico.append(f"CONDITION({token})")

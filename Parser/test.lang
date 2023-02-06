@@ -9,8 +9,8 @@ while : canMovetoThe : 1 , north do: [ moveInDir : 1 , north ] od
 ]
 
 
-goWest [ | | i f : canMoveInDir : 1 , west then: [ MoveInDir : 1 ,
-west ] e l s e : nop : ]
+goWest [ | | if : canMoveInDir : 1 , west then: [ MoveInDir : 1 ,
+west ] else : nop : ]
 [
 goTo : 3 , 3
 put : cb 2 , 1
