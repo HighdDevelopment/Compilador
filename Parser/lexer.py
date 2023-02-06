@@ -2,17 +2,6 @@ numeros = {
     "1","2","3","4","5","6","7","8","9","0"
 }
 
-commands = {"M", "R", "C", "B", "c", "b", "P", "J", "G"}
-
-cardinals = {"north", "south", "west", "east"}
-
-objects = {"balloons", "chips"}
-
-direction ={"front", "right", "left", "back", "around"}
-
-condiction = {"if", "while", "do", "then", "else", "repeat"}
-
-signs = {":", ";", ",", "(", ")", "[", "]", "|"}
 
 procedure={
     "assignTo",
@@ -26,15 +15,8 @@ procedure={
     "moveInDir",
     "jumpToThe",
     "jumpInDir",
-    "VARS",
-    "facing",
-    "canPut",
-    "canPick",
-    "canMoveInDir",
-    "canJumpInDir",
-    "canMoveToThe",
-    "canJumpToThe",
     "nop",
+    "VARS",
     ",",
     ";"
 }
