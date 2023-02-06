@@ -1,6 +1,4 @@
-tokens = {
-    "ID","NUMBERS"
-}
+numeros ={"1","2","3","4","5","6","7","8","9","0"}
 procedure={
     "assignTo",
     "goto",
@@ -19,12 +17,20 @@ procedure={
 }
 
 vars = []
+ltimo= ""
+def VARS(tokens,ultimo):
+    resultado = True
+    if tokens[0] not in numeros:
+        resultado = True
+    ultimo = tokens
 
-indx = 0
 def analizador(tokens):
-    if tokens[indx] in procedure:
+    indx = 0
+    respuesta = True
+    reservada = ""
+    while respuesta and (indx!=len(tokens)-1):
+        if tokens[0] != "ROBOT_R":
+            respuesta = False 
         indx+=1
-        analizador(tokens[indx])
-    else: 
-        return ""
+
             

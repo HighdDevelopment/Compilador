@@ -1,4 +1,25 @@
+numeros = {
+    "1","2","3","4","5","6","7","8","9","0"
+}
 
+
+procedure={
+    "assignTo",
+    "goto",
+    "move",
+    "turn", 
+    "face",
+    "put",
+    "pick",
+    "moveToThe",
+    "moveInDir",
+    "jumpToThe",
+    "jumpInDir",
+    "nop",
+    "VARS",
+    ",",
+    ";"
+}
 """
 La siguiente funcion se encarga de registrar en una lista nativa de python los tokens
 que posteriormente se deben ingresar al parser
@@ -33,12 +54,15 @@ def abrir_archivo(filename):
         o un salto de linea, paso seguido a guardar la informacion y reiniciando el token
         """
         if valor == " ":
-            lexico.append(token)
-            token = ""
-            
-        elif valor == "\n":
-            lexico.append(token)
-            token = ""
+            if token in numeros:
+                lexico.append(f"NUMBER({token})")
+                token = ""
+            elif token not in procedure:
+                lexico.append(f"ID({token})")
+                token = ""
+            else:
+                lexico.append(token)
+                token = ""
     
     if valor != " ":
         lexico.append(valor)
