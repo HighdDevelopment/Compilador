@@ -14,8 +14,8 @@ reserved = {
     "canPick": "CANPICK",
     "canMoveInDir":"CANMOVEINDIR",
     "canJumpInDir":"CANJUMPINDIR",
-    "canMoveToThe":"CANMOVETOTHE",
-    "canJumpToThe":"CANJUMPTOTHE",
+    "canMovetoThe":"CANMOVETOTHE",
+    "canJumptoThe":"CANJUMPTOTHE",
     "not":"NOT",
     "assignTo":"ASSIGNTO",
     "goTo":"GOTO",
@@ -24,8 +24,8 @@ reserved = {
     "face":"FACE",
     "put":"PUT",
     "pick":"PICK",
-    "MoveToThe":"MOVETOTHE",
-    "MoveInDir":"MOVEINDIR",
+    "moveToThe":"MOVETOTHE",
+    "moveInDir":"MOVEINDIR",
     "jumpToThe":"JUMPTOTHE",
     "jumpInDir":"JUMPINDIR",
     "nop":"NOP",
@@ -47,7 +47,11 @@ tokens = [
     "PLECA",
     "COMA",
     "DOSPUNTOS",
-    "PUNTOCOMA"
+    "PUNTOCOMA",
+    "DIRECTION",
+    "ORIENTATION",
+    "ITEMS"
+
 ] + list(reserved.values())
 
 # Reglas de expresiones regulares para los tokens simples
@@ -63,16 +67,31 @@ t_PLECA = r"\|"
 t_COMA = r","
 t_DOSPUNTOS = r":"
 t_PUNTOCOMA = r";"
+
 # Un token NUMBER representa un número decimal
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
+def t_DIRECTION(t):
+    r'(north|south|east|west)'
+    return t
+
+def t_ORIENTATION(t):
+    r'(front|right|left|back)'
+    return t
+
+def t_ITEMS(t):
+    r'(chips|balloons)'
+    return t
+
+
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
     t.type = reserved.get(t.value,'ID')    # Check for reserved words
     return t
+
 
 
 # Reglas de ignorar
