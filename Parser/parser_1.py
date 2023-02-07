@@ -33,10 +33,3 @@ def analizador(tokens):
             respuesta = False 
         indx+=1
 
-def p_factor(p):
-    '''factor : NUMBER
-              | LPAREN expression RPAREN'''
-    if len(p) == 2:
-        p[0] = p[1]
-    else:
-        p[0] = p[2]
