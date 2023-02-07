@@ -6,6 +6,8 @@ reserved = {
     'then' : 'THEN',
     'else' : 'ELSE',
     'while' : 'WHILE',
+    'do' : "DO",
+    'repeat' : "REPEAT",
     'ROBOT_R': "ROBOT_R",
     "facing": "FACING",
     "canPut": "CANPUT",
@@ -28,7 +30,7 @@ reserved = {
     "jumpInDir":"JUMPINDIR",
     "nop":"NOP",
     "VARS":"VARS",
-    "PROCS":"PROCS"
+    "PROCS":"PROCS",
  }
 
 tokens = [
@@ -72,7 +74,6 @@ def t_ID(t):
     t.type = reserved.get(t.value,'ID')    # Check for reserved words
     return t
 
- 
 
 # Reglas de ignorar
 t_ignore = " \t"
