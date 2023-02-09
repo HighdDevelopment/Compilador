@@ -30,7 +30,8 @@ tokens = (
     'move',
     'goto',
     'turn',
-    'face'
+    'face',
+    'nop'
 )
 
 global_variables = {}
@@ -115,15 +116,15 @@ def t_face(t):
     r'(?i)face\b'
     return t
 
+def t_nop(t):
+    r'(?i)nop\b'
+    return t
 
 def t_ID(t):
     r'[a-zA-Z]+'
     if t.value not in tokens:
         t.value = t.value.lower()
         return t
-
-    
-    
 
 
 def t_INTEGER(t):
@@ -208,7 +209,8 @@ def p_functions_def(p):
                     | move_def
                     | goto_def
                     | turn_def
-                    | face_def"""
+                    | face_def
+                    | nop_def"""
 
 def p_assignTo_def(p):
     'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON'
@@ -254,8 +256,12 @@ def p_turn_def(p):
     """turn_def : turn DOSPUNTOS DIRECTION_TURN SEMICOLON
                 | turn DOSPUNTOS LEFTANDRIGHT SEMICOLON"""
     
-def p_face(p):
+def p_face_def(p):
     """face_def : face DOSPUNTOS CARDINAL SEMICOLON"""
+
+def p_nop_def(p):
+    """nop_def : nop DOSPUNTOS """
+    
 
 success = True
 
