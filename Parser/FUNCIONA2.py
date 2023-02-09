@@ -52,11 +52,11 @@ def t_PROCS(t):
 
 
 def t_assignTo(t):
-    r'(?i)assignTo'
+    r'(?i)assignTo\b'
     return t
 
 def t_ITEMS(t):
-    r'(?i)chips|balloons'
+    r'(?i)chips\b|balloons\b'
     return t
 
 def t_put(t):
@@ -76,7 +76,7 @@ def t_jumptothe(t):
     return t
 
 def t_DIRECTION(t):
-    r'(?i)front|back'
+    r'(?i)front\b|back\b'
     return t
 
 def t_moveindir(t):
@@ -88,7 +88,7 @@ def t_jumpindir(t):
     return t
 
 def t_CARDINAL(t):
-    r'(?i)north|south|west|east'
+    r'(?i)north\b|south\b|west\b|east\b'
     return t
 
 def t_move(t):
@@ -104,23 +104,26 @@ def t_turn(t):
     return t
 
 def t_DIRECTION_TURN(t):
-    r'(?i)around'
+    r'(?i)around\b'
     return t
 
 def t_LEFTANDRIGHT(t):
-    r'(?i)left|right'
+    r'(?i)left\b|right\b'
     return t
 
 def t_face(t):
-    r'(?i)face'
+    r'(?i)face\b'
     return t
 
 
 def t_ID(t):
     r'[a-zA-Z]+'
-    if t.value != 'put':
+    if t.value not in tokens:
         t.value = t.value.lower()
         return t
+
+    
+    
 
 
 def t_INTEGER(t):
@@ -262,7 +265,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nputCB[|c,b| move: 1; face: west;]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[|c,b| move: 1; face: west; jumptothe: 20, left;]"
 
 lexer.input(data)
 
