@@ -125,7 +125,10 @@ def p_ID_list(p):
 def p_id_def(p):
     '''id_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET 
               | ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET 
-              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET '''
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET 
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET'''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:

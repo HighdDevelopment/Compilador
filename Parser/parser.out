@@ -11,38 +11,41 @@ Rule 5     ID_list -> ID_list COMMA ID
 Rule 6     id_def -> ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET
 Rule 7     id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET
 Rule 8     id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET
-Rule 9     function_def -> assignTo_def
-Rule 10    function_def -> put_def
-Rule 11    assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
-Rule 12    put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON
-Rule 13    put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON
+Rule 9     id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET
+Rule 10    id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+Rule 11    id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
+Rule 12    function_def -> assignTo_def
+Rule 13    function_def -> put_def
+Rule 14    assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+Rule 15    put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON
+Rule 16    put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
 Terminals, with rules where they appear
 
-COMMA                : 5 6 7 8 11 12 13
-DOSPUNTOS            : 11 12 13
-ID                   : 4 5 6 6 6 7 7 7 8 8 8 11 12
-INTEGER              : 11 13
-LBRACKET             : 6 7 8
-PLECA                : 6 6 7 7 8 8
+COMMA                : 5 6 7 8 9 10 11 14 15 16
+DOSPUNTOS            : 14 15 16
+ID                   : 4 5 6 6 6 7 7 7 8 8 8 9 9 9 10 10 10 11 11 11 14 15
+INTEGER              : 14 16
+LBRACKET             : 6 7 8 9 10 11
+PLECA                : 6 6 7 7 8 8 9 9 10 10 11 11
 PROCS                : 1 2
-RBRACKET             : 6 7 8
+RBRACKET             : 6 7 8 9 10 11
 ROBOT_R              : 1 2
-SEMICOLON            : 3 11 12 13
+SEMICOLON            : 3 14 15 16
 VARS                 : 3
-assignTo             : 11
-chips                : 12 13
+assignTo             : 14
+chips                : 15 16
 error                : 
-put                  : 12 13
+put                  : 15 16
 
 Nonterminals, with rules where they appear
 
 ID_list              : 3 5
-assignTo_def         : 9
-function_def         : 7 8 8
+assignTo_def         : 12
+function_def         : 7 8 8 9 9 9 10 10 10 10 11 11 11 11 11
 id_def               : 2
 prog                 : 0
-put_def              : 10
+put_def              : 13
 var_def              : 1 2
 
 Parsing method: LALR
@@ -98,6 +101,9 @@ state 5
     (6) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET
     (7) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET
     (8) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET
+    (9) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> . ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     $end            reduce using rule 1 (prog -> ROBOT_R var_def PROCS .)
     ID              shift and go to state 9
@@ -133,6 +139,9 @@ state 9
     (6) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA RBRACKET
     (7) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET
     (8) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET
+    (9) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID . LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     LBRACKET        shift and go to state 12
 
@@ -156,6 +165,9 @@ state 12
     (6) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA RBRACKET
     (7) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA function_def RBRACKET
     (8) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA function_def function_def RBRACKET
+    (9) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET . PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     PLECA           shift and go to state 14
 
@@ -173,6 +185,9 @@ state 14
     (6) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA RBRACKET
     (7) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA function_def RBRACKET
     (8) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA function_def function_def RBRACKET
+    (9) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA . ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     ID              shift and go to state 15
 
@@ -182,6 +197,9 @@ state 15
     (6) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA RBRACKET
     (7) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA function_def RBRACKET
     (8) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA function_def function_def RBRACKET
+    (9) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID . COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     COMMA           shift and go to state 16
 
@@ -191,6 +209,9 @@ state 16
     (6) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA RBRACKET
     (7) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA function_def RBRACKET
     (8) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA function_def function_def RBRACKET
+    (9) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA . ID PLECA function_def function_def function_def function_def function_def RBRACKET
 
     ID              shift and go to state 17
 
@@ -200,6 +221,9 @@ state 17
     (6) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA RBRACKET
     (7) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA function_def RBRACKET
     (8) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA function_def function_def RBRACKET
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID . PLECA function_def function_def function_def function_def function_def RBRACKET
 
     PLECA           shift and go to state 18
 
@@ -209,11 +233,14 @@ state 18
     (6) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . RBRACKET
     (7) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . function_def RBRACKET
     (8) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . function_def function_def RBRACKET
-    (9) function_def -> . assignTo_def
-    (10) function_def -> . put_def
-    (11) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
-    (12) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
-    (13) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . function_def function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . function_def function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA . function_def function_def function_def function_def function_def RBRACKET
+    (12) function_def -> . assignTo_def
+    (13) function_def -> . put_def
+    (14) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (15) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
     RBRACKET        shift and go to state 19
     assignTo        shift and go to state 23
@@ -234,11 +261,14 @@ state 20
 
     (7) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def . RBRACKET
     (8) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def . function_def RBRACKET
-    (9) function_def -> . assignTo_def
-    (10) function_def -> . put_def
-    (11) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
-    (12) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
-    (13) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def . function_def function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def . function_def function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def . function_def function_def function_def function_def RBRACKET
+    (12) function_def -> . assignTo_def
+    (13) function_def -> . put_def
+    (14) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (15) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
     RBRACKET        shift and go to state 26
     assignTo        shift and go to state 23
@@ -250,33 +280,33 @@ state 20
 
 state 21
 
-    (9) function_def -> assignTo_def .
+    (12) function_def -> assignTo_def .
 
-    RBRACKET        reduce using rule 9 (function_def -> assignTo_def .)
-    assignTo        reduce using rule 9 (function_def -> assignTo_def .)
-    put             reduce using rule 9 (function_def -> assignTo_def .)
+    RBRACKET        reduce using rule 12 (function_def -> assignTo_def .)
+    assignTo        reduce using rule 12 (function_def -> assignTo_def .)
+    put             reduce using rule 12 (function_def -> assignTo_def .)
 
 
 state 22
 
-    (10) function_def -> put_def .
+    (13) function_def -> put_def .
 
-    RBRACKET        reduce using rule 10 (function_def -> put_def .)
-    assignTo        reduce using rule 10 (function_def -> put_def .)
-    put             reduce using rule 10 (function_def -> put_def .)
+    RBRACKET        reduce using rule 13 (function_def -> put_def .)
+    assignTo        reduce using rule 13 (function_def -> put_def .)
+    put             reduce using rule 13 (function_def -> put_def .)
 
 
 state 23
 
-    (11) assignTo_def -> assignTo . DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (14) assignTo_def -> assignTo . DOSPUNTOS INTEGER COMMA ID SEMICOLON
 
     DOSPUNTOS       shift and go to state 27
 
 
 state 24
 
-    (12) put_def -> put . DOSPUNTOS ID COMMA chips SEMICOLON
-    (13) put_def -> put . DOSPUNTOS INTEGER COMMA chips SEMICOLON
+    (15) put_def -> put . DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> put . DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
     DOSPUNTOS       shift and go to state 28
 
@@ -284,9 +314,22 @@ state 24
 state 25
 
     (8) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def . RBRACKET
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def . function_def RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def . function_def function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def . function_def function_def function_def RBRACKET
+    (12) function_def -> . assignTo_def
+    (13) function_def -> . put_def
+    (14) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (15) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
-    RBRACKET        shift and go to state 29
+    RBRACKET        shift and go to state 30
+    assignTo        shift and go to state 23
+    put             shift and go to state 24
 
+    function_def                   shift and go to state 29
+    assignTo_def                   shift and go to state 21
+    put_def                        shift and go to state 22
 
 state 26
 
@@ -297,113 +340,178 @@ state 26
 
 state 27
 
-    (11) assignTo_def -> assignTo DOSPUNTOS . INTEGER COMMA ID SEMICOLON
+    (14) assignTo_def -> assignTo DOSPUNTOS . INTEGER COMMA ID SEMICOLON
 
-    INTEGER         shift and go to state 30
+    INTEGER         shift and go to state 31
 
 
 state 28
 
-    (12) put_def -> put DOSPUNTOS . ID COMMA chips SEMICOLON
-    (13) put_def -> put DOSPUNTOS . INTEGER COMMA chips SEMICOLON
+    (15) put_def -> put DOSPUNTOS . ID COMMA chips SEMICOLON
+    (16) put_def -> put DOSPUNTOS . INTEGER COMMA chips SEMICOLON
 
-    ID              shift and go to state 31
-    INTEGER         shift and go to state 32
+    ID              shift and go to state 32
+    INTEGER         shift and go to state 33
 
 
 state 29
+
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def . RBRACKET
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def . function_def RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def . function_def function_def RBRACKET
+    (12) function_def -> . assignTo_def
+    (13) function_def -> . put_def
+    (14) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (15) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
+
+    RBRACKET        shift and go to state 35
+    assignTo        shift and go to state 23
+    put             shift and go to state 24
+
+    function_def                   shift and go to state 34
+    assignTo_def                   shift and go to state 21
+    put_def                        shift and go to state 22
+
+state 30
 
     (8) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET .
 
     $end            reduce using rule 8 (id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET .)
 
 
-state 30
-
-    (11) assignTo_def -> assignTo DOSPUNTOS INTEGER . COMMA ID SEMICOLON
-
-    COMMA           shift and go to state 33
-
-
 state 31
 
-    (12) put_def -> put DOSPUNTOS ID . COMMA chips SEMICOLON
+    (14) assignTo_def -> assignTo DOSPUNTOS INTEGER . COMMA ID SEMICOLON
 
-    COMMA           shift and go to state 34
+    COMMA           shift and go to state 36
 
 
 state 32
 
-    (13) put_def -> put DOSPUNTOS INTEGER . COMMA chips SEMICOLON
+    (15) put_def -> put DOSPUNTOS ID . COMMA chips SEMICOLON
 
-    COMMA           shift and go to state 35
+    COMMA           shift and go to state 37
 
 
 state 33
 
-    (11) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA . ID SEMICOLON
+    (16) put_def -> put DOSPUNTOS INTEGER . COMMA chips SEMICOLON
 
-    ID              shift and go to state 36
+    COMMA           shift and go to state 38
 
 
 state 34
 
-    (12) put_def -> put DOSPUNTOS ID COMMA . chips SEMICOLON
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def . RBRACKET
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def . function_def RBRACKET
+    (12) function_def -> . assignTo_def
+    (13) function_def -> . put_def
+    (14) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON
+    (15) put_def -> . put DOSPUNTOS ID COMMA chips SEMICOLON
+    (16) put_def -> . put DOSPUNTOS INTEGER COMMA chips SEMICOLON
 
-    chips           shift and go to state 37
+    RBRACKET        shift and go to state 40
+    assignTo        shift and go to state 23
+    put             shift and go to state 24
 
+    function_def                   shift and go to state 39
+    assignTo_def                   shift and go to state 21
+    put_def                        shift and go to state 22
 
 state 35
 
-    (13) put_def -> put DOSPUNTOS INTEGER COMMA . chips SEMICOLON
+    (9) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET .
 
-    chips           shift and go to state 38
+    $end            reduce using rule 9 (id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET .)
 
 
 state 36
 
-    (11) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID . SEMICOLON
+    (14) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA . ID SEMICOLON
 
-    SEMICOLON       shift and go to state 39
+    ID              shift and go to state 41
 
 
 state 37
 
-    (12) put_def -> put DOSPUNTOS ID COMMA chips . SEMICOLON
+    (15) put_def -> put DOSPUNTOS ID COMMA . chips SEMICOLON
 
-    SEMICOLON       shift and go to state 40
+    chips           shift and go to state 42
 
 
 state 38
 
-    (13) put_def -> put DOSPUNTOS INTEGER COMMA chips . SEMICOLON
+    (16) put_def -> put DOSPUNTOS INTEGER COMMA . chips SEMICOLON
 
-    SEMICOLON       shift and go to state 41
+    chips           shift and go to state 43
 
 
 state 39
 
-    (11) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def . RBRACKET
 
-    RBRACKET        reduce using rule 11 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
-    assignTo        reduce using rule 11 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
-    put             reduce using rule 11 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
+    RBRACKET        shift and go to state 44
 
 
 state 40
 
-    (12) put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .
+    (10) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET .
 
-    RBRACKET        reduce using rule 12 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
-    assignTo        reduce using rule 12 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
-    put             reduce using rule 12 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
+    $end            reduce using rule 10 (id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET .)
 
 
 state 41
 
-    (13) put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .
+    (14) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID . SEMICOLON
 
-    RBRACKET        reduce using rule 13 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
-    assignTo        reduce using rule 13 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
-    put             reduce using rule 13 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
+    SEMICOLON       shift and go to state 45
+
+
+state 42
+
+    (15) put_def -> put DOSPUNTOS ID COMMA chips . SEMICOLON
+
+    SEMICOLON       shift and go to state 46
+
+
+state 43
+
+    (16) put_def -> put DOSPUNTOS INTEGER COMMA chips . SEMICOLON
+
+    SEMICOLON       shift and go to state 47
+
+
+state 44
+
+    (11) id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET .
+
+    $end            reduce using rule 11 (id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET .)
+
+
+state 45
+
+    (14) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .
+
+    RBRACKET        reduce using rule 14 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
+    assignTo        reduce using rule 14 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
+    put             reduce using rule 14 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON .)
+
+
+state 46
+
+    (15) put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .
+
+    RBRACKET        reduce using rule 15 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
+    assignTo        reduce using rule 15 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
+    put             reduce using rule 15 (put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON .)
+
+
+state 47
+
+    (16) put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .
+
+    RBRACKET        reduce using rule 16 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
+    assignTo        reduce using rule 16 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
+    put             reduce using rule 16 (put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON .)
 

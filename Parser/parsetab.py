@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COMMA DOSPUNTOS ID INTEGER LBRACKET PLECA PROCS RBRACKET ROBOT_R SEMICOLON VARS assignTo chips putprog : ROBOT_R var_def PROCS\n            | ROBOT_R var_def PROCS id_defvar_def : VARS ID_list SEMICOLONID_list : ID\n              | ID_list COMMA IDid_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET function_def : assignTo_def\n                    | put_defassignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLONput_def : put DOSPUNTOS ID COMMA chips SEMICOLON\n               | put DOSPUNTOS INTEGER COMMA chips SEMICOLON'
+_lr_signature = 'COMMA DOSPUNTOS ID INTEGER LBRACKET PLECA PROCS RBRACKET ROBOT_R SEMICOLON VARS assignTo chips putprog : ROBOT_R var_def PROCS\n            | ROBOT_R var_def PROCS id_defvar_def : VARS ID_list SEMICOLONID_list : ID\n              | ID_list COMMA IDid_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET\n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET\n              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKETfunction_def : assignTo_def\n                    | put_defassignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLONput_def : put DOSPUNTOS ID COMMA chips SEMICOLON\n               | put DOSPUNTOS INTEGER COMMA chips SEMICOLON'
     
-_lr_action_items = {'ROBOT_R':([0,],[2,]),'$end':([1,5,8,19,26,29,],[0,-1,-2,-6,-7,-8,]),'VARS':([2,],[4,]),'PROCS':([3,10,],[5,-3,]),'ID':([4,5,11,14,16,28,33,],[7,9,13,15,17,31,36,]),'SEMICOLON':([6,7,13,36,37,38,],[10,-4,-5,39,40,41,]),'COMMA':([6,7,13,15,30,31,32,],[11,-4,-5,16,33,34,35,]),'LBRACKET':([9,],[12,]),'PLECA':([12,17,],[14,18,]),'RBRACKET':([18,20,21,22,25,39,40,41,],[19,26,-9,-10,29,-11,-12,-13,]),'assignTo':([18,20,21,22,39,40,41,],[23,23,-9,-10,-11,-12,-13,]),'put':([18,20,21,22,39,40,41,],[24,24,-9,-10,-11,-12,-13,]),'DOSPUNTOS':([23,24,],[27,28,]),'INTEGER':([27,28,],[30,32,]),'chips':([34,35,],[37,38,]),}
+_lr_action_items = {'ROBOT_R':([0,],[2,]),'$end':([1,5,8,19,26,30,35,40,44,],[0,-1,-2,-6,-7,-8,-9,-10,-11,]),'VARS':([2,],[4,]),'PROCS':([3,10,],[5,-3,]),'ID':([4,5,11,14,16,28,36,],[7,9,13,15,17,32,41,]),'SEMICOLON':([6,7,13,41,42,43,],[10,-4,-5,45,46,47,]),'COMMA':([6,7,13,15,31,32,33,],[11,-4,-5,16,36,37,38,]),'LBRACKET':([9,],[12,]),'PLECA':([12,17,],[14,18,]),'RBRACKET':([18,20,21,22,25,29,34,39,45,46,47,],[19,26,-12,-13,30,35,40,44,-14,-15,-16,]),'assignTo':([18,20,21,22,25,29,34,45,46,47,],[23,23,-12,-13,23,23,23,-14,-15,-16,]),'put':([18,20,21,22,25,29,34,45,46,47,],[24,24,-12,-13,24,24,24,-14,-15,-16,]),'DOSPUNTOS':([23,24,],[27,28,]),'INTEGER':([27,28,],[31,33,]),'chips':([37,38,],[42,43,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'prog':([0,],[1,]),'var_def':([2,],[3,]),'ID_list':([4,],[6,]),'id_def':([5,],[8,]),'function_def':([18,20,],[20,25,]),'assignTo_def':([18,20,],[21,21,]),'put_def':([18,20,],[22,22,]),}
+_lr_goto_items = {'prog':([0,],[1,]),'var_def':([2,],[3,]),'ID_list':([4,],[6,]),'id_def':([5,],[8,]),'function_def':([18,20,25,29,34,],[20,25,29,34,39,]),'assignTo_def':([18,20,25,29,34,],[21,21,21,21,21,]),'put_def':([18,20,25,29,34,],[22,22,22,22,22,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -35,9 +35,12 @@ _lr_productions = [
   ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET','id_def',8,'p_id_def','FUNCIONA2.py',126),
   ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET','id_def',9,'p_id_def','FUNCIONA2.py',127),
   ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET','id_def',10,'p_id_def','FUNCIONA2.py',128),
-  ('function_def -> assignTo_def','function_def',1,'p_functions_def','FUNCIONA2.py',135),
-  ('function_def -> put_def','function_def',1,'p_functions_def','FUNCIONA2.py',136),
-  ('assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON','assignTo_def',6,'p_assignTo_def','FUNCIONA2.py',139),
-  ('put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON','put_def',6,'p_put_def','FUNCIONA2.py',147),
-  ('put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON','put_def',6,'p_put_def','FUNCIONA2.py',148),
+  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def RBRACKET','id_def',11,'p_id_def','FUNCIONA2.py',129),
+  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def RBRACKET','id_def',12,'p_id_def','FUNCIONA2.py',130),
+  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def function_def function_def function_def RBRACKET','id_def',13,'p_id_def','FUNCIONA2.py',131),
+  ('function_def -> assignTo_def','function_def',1,'p_functions_def','FUNCIONA2.py',138),
+  ('function_def -> put_def','function_def',1,'p_functions_def','FUNCIONA2.py',139),
+  ('assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON','assignTo_def',6,'p_assignTo_def','FUNCIONA2.py',142),
+  ('put_def -> put DOSPUNTOS ID COMMA chips SEMICOLON','put_def',6,'p_put_def','FUNCIONA2.py',150),
+  ('put_def -> put DOSPUNTOS INTEGER COMMA chips SEMICOLON','put_def',6,'p_put_def','FUNCIONA2.py',151),
 ]
