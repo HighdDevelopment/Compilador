@@ -172,7 +172,7 @@ lexer = lex.lex()
 
 def p_prog(p):
     '''prog : ROBOT_R var_def PROCS
-            | ROBOT_R var_def PROCS id_def'''
+            | ROBOT_R var_def PROCS bloque_def'''
     p[0] = p[2]
 
 def p_var_def(p):
@@ -188,6 +188,10 @@ def p_ID_list(p):
         p[0] = [p[1]]
     else:
         p[0] = p[1] + [p[3]]
+
+def p_bloque_def(p):
+    """bloque_def : id_def
+                  | bloque_def id_def"""
 
 def p_id_def(p):
     '''id_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET 

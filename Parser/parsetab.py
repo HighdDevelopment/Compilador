@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'CARDINAL COMMA DIRECTION DIRECTION_TURN DOSPUNTOS ID INTEGER ITEMS LBRACKET LEFTANDRIGHT PLECA PROCS RBRACKET ROBOT_R SEMICOLON VARS assignTo face goto jumpindir jumptothe move moveindir movetothe nop pick put turnprog : ROBOT_R var_def PROCS\n            | ROBOT_R var_def PROCS id_defvar_def : VARS ID_list SEMICOLONID_list : ID\n              | ID_list COMMA IDid_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA func_def RBRACKET \n    func_def : function_def\n             | func_def SEMICOLON function_def\n    function_def : assignTo_def\n                    | put_def\n                    | moveandjumptothe_def\n                    | moveandjumpindir_def\n                    | move_def\n                    | goto_def\n                    | turn_def\n                    | face_def\n                    | nop_defassignTo_def : assignTo DOSPUNTOS INTEGER COMMA IDput_def : put DOSPUNTOS ID COMMA ITEMS \n               | put DOSPUNTOS INTEGER COMMA ITEMS \n               | pick DOSPUNTOS INTEGER COMMA ITEMS \n               | pick DOSPUNTOS ID COMMA ITEMS moveandjumptothe_def : movetothe DOSPUNTOS ID COMMA DIRECTION \n               | movetothe DOSPUNTOS INTEGER COMMA DIRECTION \n               | jumptothe DOSPUNTOS INTEGER COMMA DIRECTION \n               | jumptothe DOSPUNTOS ID COMMA DIRECTION \n               | movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT \n               | movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT \n               | jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT \n               | jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT moveandjumpindir_def : moveindir DOSPUNTOS ID COMMA CARDINAL \n               | moveindir DOSPUNTOS INTEGER COMMA CARDINAL \n               | jumpindir DOSPUNTOS INTEGER COMMA CARDINAL \n               | jumpindir DOSPUNTOS ID COMMA CARDINAL move_def : move DOSPUNTOS ID \n                | move DOSPUNTOS INTEGER goto_def : goto DOSPUNTOS ID COMMA ID \n                | goto DOSPUNTOS INTEGER COMMA INTEGER \n                | goto DOSPUNTOS ID COMMA INTEGER \n                | goto DOSPUNTOS INTEGER COMMA ID turn_def : turn DOSPUNTOS DIRECTION_TURN \n                | turn DOSPUNTOS LEFTANDRIGHT face_def : face DOSPUNTOS CARDINAL nop_def : nop DOSPUNTOS '
+_lr_signature = 'CARDINAL COMMA DIRECTION DIRECTION_TURN DOSPUNTOS ID INTEGER ITEMS LBRACKET LEFTANDRIGHT PLECA PROCS RBRACKET ROBOT_R SEMICOLON VARS assignTo face goto jumpindir jumptothe move moveindir movetothe nop pick put turnprog : ROBOT_R var_def PROCS\n            | ROBOT_R var_def PROCS bloque_defvar_def : VARS ID_list SEMICOLONID_list : ID\n              | ID_list COMMA IDbloque_def : id_def\n                  | bloque_def id_defid_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET \n              | ID LBRACKET PLECA ID COMMA ID PLECA func_def RBRACKET \n    func_def : function_def\n             | func_def SEMICOLON function_def\n    function_def : assignTo_def\n                    | put_def\n                    | moveandjumptothe_def\n                    | moveandjumpindir_def\n                    | move_def\n                    | goto_def\n                    | turn_def\n                    | face_def\n                    | nop_defassignTo_def : assignTo DOSPUNTOS INTEGER COMMA IDput_def : put DOSPUNTOS ID COMMA ITEMS \n               | put DOSPUNTOS INTEGER COMMA ITEMS \n               | pick DOSPUNTOS INTEGER COMMA ITEMS \n               | pick DOSPUNTOS ID COMMA ITEMS moveandjumptothe_def : movetothe DOSPUNTOS ID COMMA DIRECTION \n               | movetothe DOSPUNTOS INTEGER COMMA DIRECTION \n               | jumptothe DOSPUNTOS INTEGER COMMA DIRECTION \n               | jumptothe DOSPUNTOS ID COMMA DIRECTION \n               | movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT \n               | movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT \n               | jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT \n               | jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT moveandjumpindir_def : moveindir DOSPUNTOS ID COMMA CARDINAL \n               | moveindir DOSPUNTOS INTEGER COMMA CARDINAL \n               | jumpindir DOSPUNTOS INTEGER COMMA CARDINAL \n               | jumpindir DOSPUNTOS ID COMMA CARDINAL move_def : move DOSPUNTOS ID \n                | move DOSPUNTOS INTEGER goto_def : goto DOSPUNTOS ID COMMA ID \n                | goto DOSPUNTOS INTEGER COMMA INTEGER \n                | goto DOSPUNTOS ID COMMA INTEGER \n                | goto DOSPUNTOS INTEGER COMMA ID turn_def : turn DOSPUNTOS DIRECTION_TURN \n                | turn DOSPUNTOS LEFTANDRIGHT face_def : face DOSPUNTOS CARDINAL nop_def : nop DOSPUNTOS '
     
-_lr_action_items = {'ROBOT_R':([0,],[2,]),'$end':([1,5,8,19,43,],[0,-1,-2,-6,-7,]),'VARS':([2,],[4,]),'PROCS':([3,10,],[5,-3,]),'ID':([4,5,11,14,16,46,47,48,49,50,51,52,53,78,91,92,],[7,9,13,15,17,59,62,63,66,67,70,71,73,93,110,113,]),'SEMICOLON':([6,7,13,20,21,22,23,24,25,26,27,28,29,30,56,57,71,72,75,76,77,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,],[10,-4,-5,44,-8,-10,-11,-12,-13,-14,-15,-16,-17,-18,-45,-9,-36,-37,-42,-43,-44,-19,-20,-21,-22,-23,-24,-28,-25,-29,-26,-30,-27,-31,-32,-33,-34,-35,-38,-40,-39,-41,]),'COMMA':([6,7,13,15,58,59,60,61,62,63,64,65,66,67,68,69,70,73,74,],[11,-4,-5,16,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,]),'LBRACKET':([9,],[12,]),'PLECA':([12,17,],[14,18,]),'RBRACKET':([18,20,21,22,23,24,25,26,27,28,29,30,56,57,71,72,75,76,77,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,],[19,43,-8,-10,-11,-12,-13,-14,-15,-16,-17,-18,-45,-9,-36,-37,-42,-43,-44,-19,-20,-21,-22,-23,-24,-28,-25,-29,-26,-30,-27,-31,-32,-33,-34,-35,-38,-40,-39,-41,]),'assignTo':([18,44,],[31,31,]),'put':([18,44,],[32,32,]),'pick':([18,44,],[33,33,]),'movetothe':([18,44,],[34,34,]),'jumptothe':([18,44,],[35,35,]),'moveindir':([18,44,],[36,36,]),'jumpindir':([18,44,],[37,37,]),'move':([18,44,],[38,38,]),'goto':([18,44,],[39,39,]),'turn':([18,44,],[40,40,]),'face':([18,44,],[41,41,]),'nop':([18,44,],[42,42,]),'DOSPUNTOS':([31,32,33,34,35,36,37,38,39,40,41,42,],[45,46,47,48,49,50,51,52,53,54,55,56,]),'INTEGER':([45,46,47,48,49,50,51,52,53,91,92,],[58,60,61,64,65,68,69,72,74,111,112,]),'DIRECTION_TURN':([54,],[75,]),'LEFTANDRIGHT':([54,83,84,85,86,],[76,99,101,103,105,]),'CARDINAL':([55,87,88,89,90,],[77,106,107,108,109,]),'ITEMS':([79,80,81,82,],[94,95,96,97,]),'DIRECTION':([83,84,85,86,],[98,100,102,104,]),}
+_lr_action_items = {'ROBOT_R':([0,],[2,]),'$end':([1,5,8,9,13,21,45,],[0,-1,-2,-6,-7,-8,-9,]),'VARS':([2,],[4,]),'PROCS':([3,11,],[5,-3,]),'ID':([4,5,8,9,12,13,16,18,21,45,48,49,50,51,52,53,54,55,80,93,94,],[7,10,10,-6,15,-7,17,19,-8,-9,61,64,65,68,69,72,73,75,95,112,115,]),'SEMICOLON':([6,7,15,22,23,24,25,26,27,28,29,30,31,32,58,59,73,74,77,78,79,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,],[11,-4,-5,46,-10,-12,-13,-14,-15,-16,-17,-18,-19,-20,-47,-11,-38,-39,-44,-45,-46,-21,-22,-23,-24,-25,-26,-30,-27,-31,-28,-32,-29,-33,-34,-35,-36,-37,-40,-42,-41,-43,]),'COMMA':([6,7,15,17,60,61,62,63,64,65,66,67,68,69,70,71,72,75,76,],[12,-4,-5,18,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,]),'LBRACKET':([10,],[14,]),'PLECA':([14,19,],[16,20,]),'RBRACKET':([20,22,23,24,25,26,27,28,29,30,31,32,58,59,73,74,77,78,79,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,],[21,45,-10,-12,-13,-14,-15,-16,-17,-18,-19,-20,-47,-11,-38,-39,-44,-45,-46,-21,-22,-23,-24,-25,-26,-30,-27,-31,-28,-32,-29,-33,-34,-35,-36,-37,-40,-42,-41,-43,]),'assignTo':([20,46,],[33,33,]),'put':([20,46,],[34,34,]),'pick':([20,46,],[35,35,]),'movetothe':([20,46,],[36,36,]),'jumptothe':([20,46,],[37,37,]),'moveindir':([20,46,],[38,38,]),'jumpindir':([20,46,],[39,39,]),'move':([20,46,],[40,40,]),'goto':([20,46,],[41,41,]),'turn':([20,46,],[42,42,]),'face':([20,46,],[43,43,]),'nop':([20,46,],[44,44,]),'DOSPUNTOS':([33,34,35,36,37,38,39,40,41,42,43,44,],[47,48,49,50,51,52,53,54,55,56,57,58,]),'INTEGER':([47,48,49,50,51,52,53,54,55,93,94,],[60,62,63,66,67,70,71,74,76,113,114,]),'DIRECTION_TURN':([56,],[77,]),'LEFTANDRIGHT':([56,85,86,87,88,],[78,101,103,105,107,]),'CARDINAL':([57,89,90,91,92,],[79,108,109,110,111,]),'ITEMS':([81,82,83,84,],[96,97,98,99,]),'DIRECTION':([85,86,87,88,],[100,102,104,106,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'prog':([0,],[1,]),'var_def':([2,],[3,]),'ID_list':([4,],[6,]),'id_def':([5,],[8,]),'func_def':([18,],[20,]),'function_def':([18,44,],[21,57,]),'assignTo_def':([18,44,],[22,22,]),'put_def':([18,44,],[23,23,]),'moveandjumptothe_def':([18,44,],[24,24,]),'moveandjumpindir_def':([18,44,],[25,25,]),'move_def':([18,44,],[26,26,]),'goto_def':([18,44,],[27,27,]),'turn_def':([18,44,],[28,28,]),'face_def':([18,44,],[29,29,]),'nop_def':([18,44,],[30,30,]),}
+_lr_goto_items = {'prog':([0,],[1,]),'var_def':([2,],[3,]),'ID_list':([4,],[6,]),'bloque_def':([5,],[8,]),'id_def':([5,8,],[9,13,]),'func_def':([20,],[22,]),'function_def':([20,46,],[23,59,]),'assignTo_def':([20,46,],[24,24,]),'put_def':([20,46,],[25,25,]),'moveandjumptothe_def':([20,46,],[26,26,]),'moveandjumpindir_def':([20,46,],[27,27,]),'move_def':([20,46,],[28,28,]),'goto_def':([20,46,],[29,29,]),'turn_def':([20,46,],[30,30,]),'face_def':([20,46,],[31,31,]),'nop_def':([20,46,],[32,32,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -28,48 +28,50 @@ del _lr_goto_items
 _lr_productions = [
   ("S' -> prog","S'",1,None,None,None),
   ('prog -> ROBOT_R var_def PROCS','prog',3,'p_prog','FUNCIONA2.py',174),
-  ('prog -> ROBOT_R var_def PROCS id_def','prog',4,'p_prog','FUNCIONA2.py',175),
+  ('prog -> ROBOT_R var_def PROCS bloque_def','prog',4,'p_prog','FUNCIONA2.py',175),
   ('var_def -> VARS ID_list SEMICOLON','var_def',3,'p_var_def','FUNCIONA2.py',179),
   ('ID_list -> ID','ID_list',1,'p_ID_list','FUNCIONA2.py',185),
   ('ID_list -> ID_list COMMA ID','ID_list',3,'p_ID_list','FUNCIONA2.py',186),
-  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET','id_def',8,'p_id_def','FUNCIONA2.py',193),
-  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA func_def RBRACKET','id_def',9,'p_id_def','FUNCIONA2.py',194),
-  ('func_def -> function_def','func_def',1,'p_func_def','FUNCIONA2.py',202),
-  ('func_def -> func_def SEMICOLON function_def','func_def',3,'p_func_def','FUNCIONA2.py',203),
-  ('function_def -> assignTo_def','function_def',1,'p_functions_def','FUNCIONA2.py',208),
-  ('function_def -> put_def','function_def',1,'p_functions_def','FUNCIONA2.py',209),
-  ('function_def -> moveandjumptothe_def','function_def',1,'p_functions_def','FUNCIONA2.py',210),
-  ('function_def -> moveandjumpindir_def','function_def',1,'p_functions_def','FUNCIONA2.py',211),
-  ('function_def -> move_def','function_def',1,'p_functions_def','FUNCIONA2.py',212),
-  ('function_def -> goto_def','function_def',1,'p_functions_def','FUNCIONA2.py',213),
-  ('function_def -> turn_def','function_def',1,'p_functions_def','FUNCIONA2.py',214),
-  ('function_def -> face_def','function_def',1,'p_functions_def','FUNCIONA2.py',215),
-  ('function_def -> nop_def','function_def',1,'p_functions_def','FUNCIONA2.py',216),
-  ('assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID','assignTo_def',5,'p_assignTo_def','FUNCIONA2.py',219),
-  ('put_def -> put DOSPUNTOS ID COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',227),
-  ('put_def -> put DOSPUNTOS INTEGER COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',228),
-  ('put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',229),
-  ('put_def -> pick DOSPUNTOS ID COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',230),
-  ('moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',233),
-  ('moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',234),
-  ('moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',235),
-  ('moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',236),
-  ('moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',237),
-  ('moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',238),
-  ('moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',239),
-  ('moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',240),
-  ('moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',243),
-  ('moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',244),
-  ('moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',245),
-  ('moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',246),
-  ('move_def -> move DOSPUNTOS ID','move_def',3,'p_move_def','FUNCIONA2.py',249),
-  ('move_def -> move DOSPUNTOS INTEGER','move_def',3,'p_move_def','FUNCIONA2.py',250),
-  ('goto_def -> goto DOSPUNTOS ID COMMA ID','goto_def',5,'p_goto_def','FUNCIONA2.py',253),
-  ('goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER','goto_def',5,'p_goto_def','FUNCIONA2.py',254),
-  ('goto_def -> goto DOSPUNTOS ID COMMA INTEGER','goto_def',5,'p_goto_def','FUNCIONA2.py',255),
-  ('goto_def -> goto DOSPUNTOS INTEGER COMMA ID','goto_def',5,'p_goto_def','FUNCIONA2.py',256),
-  ('turn_def -> turn DOSPUNTOS DIRECTION_TURN','turn_def',3,'p_turn_def','FUNCIONA2.py',259),
-  ('turn_def -> turn DOSPUNTOS LEFTANDRIGHT','turn_def',3,'p_turn_def','FUNCIONA2.py',260),
-  ('face_def -> face DOSPUNTOS CARDINAL','face_def',3,'p_face_def','FUNCIONA2.py',263),
-  ('nop_def -> nop DOSPUNTOS','nop_def',2,'p_nop_def','FUNCIONA2.py',266),
+  ('bloque_def -> id_def','bloque_def',1,'p_bloque_def','FUNCIONA2.py',193),
+  ('bloque_def -> bloque_def id_def','bloque_def',2,'p_bloque_def','FUNCIONA2.py',194),
+  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET','id_def',8,'p_id_def','FUNCIONA2.py',197),
+  ('id_def -> ID LBRACKET PLECA ID COMMA ID PLECA func_def RBRACKET','id_def',9,'p_id_def','FUNCIONA2.py',198),
+  ('func_def -> function_def','func_def',1,'p_func_def','FUNCIONA2.py',206),
+  ('func_def -> func_def SEMICOLON function_def','func_def',3,'p_func_def','FUNCIONA2.py',207),
+  ('function_def -> assignTo_def','function_def',1,'p_functions_def','FUNCIONA2.py',212),
+  ('function_def -> put_def','function_def',1,'p_functions_def','FUNCIONA2.py',213),
+  ('function_def -> moveandjumptothe_def','function_def',1,'p_functions_def','FUNCIONA2.py',214),
+  ('function_def -> moveandjumpindir_def','function_def',1,'p_functions_def','FUNCIONA2.py',215),
+  ('function_def -> move_def','function_def',1,'p_functions_def','FUNCIONA2.py',216),
+  ('function_def -> goto_def','function_def',1,'p_functions_def','FUNCIONA2.py',217),
+  ('function_def -> turn_def','function_def',1,'p_functions_def','FUNCIONA2.py',218),
+  ('function_def -> face_def','function_def',1,'p_functions_def','FUNCIONA2.py',219),
+  ('function_def -> nop_def','function_def',1,'p_functions_def','FUNCIONA2.py',220),
+  ('assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID','assignTo_def',5,'p_assignTo_def','FUNCIONA2.py',223),
+  ('put_def -> put DOSPUNTOS ID COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',231),
+  ('put_def -> put DOSPUNTOS INTEGER COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',232),
+  ('put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',233),
+  ('put_def -> pick DOSPUNTOS ID COMMA ITEMS','put_def',5,'p_put_def','FUNCIONA2.py',234),
+  ('moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',237),
+  ('moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',238),
+  ('moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',239),
+  ('moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',240),
+  ('moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',241),
+  ('moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',242),
+  ('moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',243),
+  ('moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT','moveandjumptothe_def',5,'p_moveandjumptothe_def','FUNCIONA2.py',244),
+  ('moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',247),
+  ('moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',248),
+  ('moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',249),
+  ('moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL','moveandjumpindir_def',5,'p_moveandjumpindir_def','FUNCIONA2.py',250),
+  ('move_def -> move DOSPUNTOS ID','move_def',3,'p_move_def','FUNCIONA2.py',253),
+  ('move_def -> move DOSPUNTOS INTEGER','move_def',3,'p_move_def','FUNCIONA2.py',254),
+  ('goto_def -> goto DOSPUNTOS ID COMMA ID','goto_def',5,'p_goto_def','FUNCIONA2.py',257),
+  ('goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER','goto_def',5,'p_goto_def','FUNCIONA2.py',258),
+  ('goto_def -> goto DOSPUNTOS ID COMMA INTEGER','goto_def',5,'p_goto_def','FUNCIONA2.py',259),
+  ('goto_def -> goto DOSPUNTOS INTEGER COMMA ID','goto_def',5,'p_goto_def','FUNCIONA2.py',260),
+  ('turn_def -> turn DOSPUNTOS DIRECTION_TURN','turn_def',3,'p_turn_def','FUNCIONA2.py',263),
+  ('turn_def -> turn DOSPUNTOS LEFTANDRIGHT','turn_def',3,'p_turn_def','FUNCIONA2.py',264),
+  ('face_def -> face DOSPUNTOS CARDINAL','face_def',3,'p_face_def','FUNCIONA2.py',267),
+  ('nop_def -> nop DOSPUNTOS','nop_def',2,'p_nop_def','FUNCIONA2.py',270),
 ]
