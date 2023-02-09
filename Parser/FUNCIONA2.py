@@ -200,7 +200,7 @@ def p_id_def(p):
 def p_func_def(p):
     """
     func_def : function_def
-             | func_def function_def
+             | func_def SEMICOLON function_def
     """
 
 
@@ -216,7 +216,7 @@ def p_functions_def(p):
                     | nop_def"""
 
 def p_assignTo_def(p):
-    'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON'
+    'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID'
     if p[5] in global_variables:
         global_variables[p[5]] = p[3]
         p[0] = (p[3], p[5])
@@ -224,43 +224,43 @@ def p_assignTo_def(p):
         p_error(p)  
 
 def p_put_def(p):
-    """put_def : put DOSPUNTOS ID COMMA ITEMS SEMICOLON
-               | put DOSPUNTOS INTEGER COMMA ITEMS SEMICOLON
-               | pick DOSPUNTOS INTEGER COMMA ITEMS SEMICOLON
-               | pick DOSPUNTOS ID COMMA ITEMS SEMICOLON"""
+    """put_def : put DOSPUNTOS ID COMMA ITEMS 
+               | put DOSPUNTOS INTEGER COMMA ITEMS 
+               | pick DOSPUNTOS INTEGER COMMA ITEMS 
+               | pick DOSPUNTOS ID COMMA ITEMS """
 
 def p_moveandjumptothe_def(p):
-    """moveandjumptothe_def : movetothe DOSPUNTOS ID COMMA DIRECTION SEMICOLON
-               | movetothe DOSPUNTOS INTEGER COMMA DIRECTION SEMICOLON
-               | jumptothe DOSPUNTOS INTEGER COMMA DIRECTION SEMICOLON
-               | jumptothe DOSPUNTOS ID COMMA DIRECTION SEMICOLON
-               | movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT SEMICOLON
-               | movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT SEMICOLON
-               | jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT SEMICOLON
-               | jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT SEMICOLON"""    
+    """moveandjumptothe_def : movetothe DOSPUNTOS ID COMMA DIRECTION 
+               | movetothe DOSPUNTOS INTEGER COMMA DIRECTION 
+               | jumptothe DOSPUNTOS INTEGER COMMA DIRECTION 
+               | jumptothe DOSPUNTOS ID COMMA DIRECTION 
+               | movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT 
+               | movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT 
+               | jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT 
+               | jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT """    
 
 def p_moveandjumpindir_def(p):
-    """moveandjumpindir_def : moveindir DOSPUNTOS ID COMMA CARDINAL SEMICOLON
-               | moveindir DOSPUNTOS INTEGER COMMA CARDINAL SEMICOLON
-               | jumpindir DOSPUNTOS INTEGER COMMA CARDINAL SEMICOLON
-               | jumpindir DOSPUNTOS ID COMMA CARDINAL SEMICOLON"""
+    """moveandjumpindir_def : moveindir DOSPUNTOS ID COMMA CARDINAL 
+               | moveindir DOSPUNTOS INTEGER COMMA CARDINAL 
+               | jumpindir DOSPUNTOS INTEGER COMMA CARDINAL 
+               | jumpindir DOSPUNTOS ID COMMA CARDINAL """
     
 def p_move_def(p):
-    """move_def : move DOSPUNTOS ID SEMICOLON
-                | move DOSPUNTOS INTEGER SEMICOLON"""
+    """move_def : move DOSPUNTOS ID 
+                | move DOSPUNTOS INTEGER """
 
 def p_goto_def(p):
-    """goto_def : goto DOSPUNTOS ID COMMA ID SEMICOLON
-                | goto DOSPUNTOS INTEGER COMMA INTEGER SEMICOLON
-                | goto DOSPUNTOS ID COMMA INTEGER SEMICOLON
-                | goto DOSPUNTOS INTEGER COMMA ID SEMICOLON"""
+    """goto_def : goto DOSPUNTOS ID COMMA ID 
+                | goto DOSPUNTOS INTEGER COMMA INTEGER 
+                | goto DOSPUNTOS ID COMMA INTEGER 
+                | goto DOSPUNTOS INTEGER COMMA ID """
 
 def p_turn_def(p):
-    """turn_def : turn DOSPUNTOS DIRECTION_TURN SEMICOLON
-                | turn DOSPUNTOS LEFTANDRIGHT SEMICOLON"""
+    """turn_def : turn DOSPUNTOS DIRECTION_TURN 
+                | turn DOSPUNTOS LEFTANDRIGHT """
     
 def p_face_def(p):
-    """face_def : face DOSPUNTOS CARDINAL SEMICOLON"""
+    """face_def : face DOSPUNTOS CARDINAL """
 
 def p_nop_def(p):
     """nop_def : nop DOSPUNTOS """
@@ -274,7 +274,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[|c,b| move: 1; face: west; jumptothe: 20, left;]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[|c,b| move: 1;assignTo: 1, y]"
 
 lexer.input(data)
 
