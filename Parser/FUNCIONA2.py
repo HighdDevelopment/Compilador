@@ -10,7 +10,6 @@ tokens = (
     'COMMA',
     'SEMICOLON',
     'PROCS',
-    'PUT',
     'LBRACKET',
     'RBRACKET',
     'PLECA',
@@ -21,6 +20,9 @@ tokens = (
 )
 
 global_variables = {}
+
+
+
 
 def t_ROBOT_R(t):
     r'ROBOT_R'
@@ -34,9 +36,6 @@ def t_PROCS(t):
     r'PROCS'
     return t
 
-def t_PUT(t):
-    r'PUT'
-    return t
 
 def t_assignTo(t):
     r'assignTo'
@@ -91,7 +90,7 @@ lexer = lex.lex()
 
 def p_prog(p):
     '''prog : ROBOT_R var_def PROCS
-            | ROBOT_R var_def PROCS put_def'''
+            | ROBOT_R var_def PROCS id_def'''
     p[0] = p[2]
 
 def p_var_def(p):
@@ -108,26 +107,28 @@ def p_ID_list(p):
     else:
         p[0] = p[1] + [p[3]]
 
-def p_put_def(p):
-    '''put_def : PUT LBRACKET PLECA ID COMMA ID PLECA RBRACKET 
-               | PUT LBRACKET PLECA ID COMMA ID PLECA assignTo_def RBRACKET '''
+def p_id_def(p):
+    '''id_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET 
+              | ID LBRACKET PLECA ID COMMA ID PLECA assignTo_def RBRACKET '''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:
         p[0] = (p[3], p[5], p[9])
 
+
 def p_assignTo_def(p):
     'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON'
-    global_variables[p[5]] = p[3]
-    p[0] = (p[3], p[5])
-    
-
+    if p[5] in global_variables:
+        global_variables[p[5]] = p[3]
+        p[0] = (p[3], p[5])
+    else:
+        raise ValueError(f"Variable {p[5]} no se encuentra en global_variables")      
 def p_error(p):
     print(f"Syntax error at '{p.value}'")
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nam, y, z,arroz;\nPROCS\nPUT[|a,b| assignTo:51,arroz;]"
+data = "ROBOT_R\nVARS nam, y, z,arroz;\nPROCS\nPutCB[|c,b| assignTo:51,nam;]"
 
 lexer.input(data)
 
