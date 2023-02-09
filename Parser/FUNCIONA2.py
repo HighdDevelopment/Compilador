@@ -17,7 +17,20 @@ tokens = (
     'DOSPUNTOS',
     'INTEGER',
     'put',
-    'chips'
+    'ITEMS',
+    'pick',
+    'DIRECTION',
+    'LEFTANDRIGHT',
+    'DIRECTION_TURN',
+    'movetothe',
+    'jumptothe',
+    'moveindir',
+    'jumpindir',
+    'CARDINAL',
+    'move',
+    'goto',
+    'turn',
+    'face'
 )
 
 global_variables = {}
@@ -42,13 +55,66 @@ def t_assignTo(t):
     r'(?i)assignTo'
     return t
 
-def t_chips(t):
+def t_ITEMS(t):
     r'(?i)chips|balloons'
     return t
 
 def t_put(t):
     r'(?i)put\b'
     return t
+
+def t_pick(t):
+    r'(?i)pick\b'
+    return t
+
+def t_movetothe(t):
+    r'(?i)movetothe\b'
+    return t
+
+def t_jumptothe(t):
+    r'(?i)jumptothe\b'
+    return t
+
+def t_DIRECTION(t):
+    r'(?i)front|back'
+    return t
+
+def t_moveindir(t):
+    r'(?i)moveindir\b'
+    return t
+
+def t_jumpindir(t):
+    r'(?i)jumpindir\b'
+    return t
+
+def t_CARDINAL(t):
+    r'(?i)north|south|west|east'
+    return t
+
+def t_move(t):
+    r'(?i)move\b'
+    return t
+
+def t_goto(t):
+    r'(?i)goto\b'
+    return t
+
+def t_turn(t):
+    r'(?i)turn\b'
+    return t
+
+def t_DIRECTION_TURN(t):
+    r'(?i)around'
+    return t
+
+def t_LEFTANDRIGHT(t):
+    r'(?i)left|right'
+    return t
+
+def t_face(t):
+    r'(?i)face'
+    return t
+
 
 def t_ID(t):
     r'[a-zA-Z]+'
@@ -61,9 +127,6 @@ def t_INTEGER(t):
     r'\d+'
     t.value = int(t.value)
     return t
-
-
-
 
 def t_COMMA(t):
     r','
@@ -136,7 +199,13 @@ def p_id_def(p):
 
 def p_functions_def(p):
     """function_def : assignTo_def
-                    | put_def"""
+                    | put_def
+                    | moveandjumptothe_def
+                    | moveandjumpindir_def
+                    | move_def
+                    | goto_def
+                    | turn_def
+                    | face_def"""
 
 def p_assignTo_def(p):
     'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON'
@@ -147,9 +216,44 @@ def p_assignTo_def(p):
         p_error(p)  
 
 def p_put_def(p):
-    """put_def : put DOSPUNTOS ID COMMA chips SEMICOLON
-               | put DOSPUNTOS INTEGER COMMA chips SEMICOLON"""
-        
+    """put_def : put DOSPUNTOS ID COMMA ITEMS SEMICOLON
+               | put DOSPUNTOS INTEGER COMMA ITEMS SEMICOLON
+               | pick DOSPUNTOS INTEGER COMMA ITEMS SEMICOLON
+               | pick DOSPUNTOS ID COMMA ITEMS SEMICOLON"""
+
+def p_moveandjumptothe_def(p):
+    """moveandjumptothe_def : movetothe DOSPUNTOS ID COMMA DIRECTION SEMICOLON
+               | movetothe DOSPUNTOS INTEGER COMMA DIRECTION SEMICOLON
+               | jumptothe DOSPUNTOS INTEGER COMMA DIRECTION SEMICOLON
+               | jumptothe DOSPUNTOS ID COMMA DIRECTION SEMICOLON
+               | movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT SEMICOLON
+               | movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT SEMICOLON
+               | jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT SEMICOLON
+               | jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT SEMICOLON"""    
+
+def p_moveandjumpindir_def(p):
+    """moveandjumpindir_def : moveindir DOSPUNTOS ID COMMA CARDINAL SEMICOLON
+               | moveindir DOSPUNTOS INTEGER COMMA CARDINAL SEMICOLON
+               | jumpindir DOSPUNTOS INTEGER COMMA CARDINAL SEMICOLON
+               | jumpindir DOSPUNTOS ID COMMA CARDINAL SEMICOLON"""
+    
+def p_move_def(p):
+    """move_def : move DOSPUNTOS ID SEMICOLON
+                | move DOSPUNTOS INTEGER SEMICOLON"""
+
+def p_goto_def(p):
+    """goto_def : goto DOSPUNTOS ID COMMA ID SEMICOLON
+                | goto DOSPUNTOS INTEGER COMMA INTEGER SEMICOLON
+                | goto DOSPUNTOS ID COMMA INTEGER SEMICOLON
+                | goto DOSPUNTOS INTEGER COMMA ID SEMICOLON"""
+
+def p_turn_def(p):
+    """turn_def : turn DOSPUNTOS DIRECTION_TURN SEMICOLON
+                | turn DOSPUNTOS LEFTANDRIGHT SEMICOLON"""
+    
+def p_face(p):
+    """face_def : face DOSPUNTOS CARDINAL SEMICOLON"""
+
 success = True
 
 def p_error(p):
@@ -158,7 +262,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nputCB[|c,b| assignto: 1,nam; put: 5,balloons;]"
+data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nputCB[|c,b| move: 1; face: west;]"
 
 lexer.input(data)
 
