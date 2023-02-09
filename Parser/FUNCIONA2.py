@@ -43,6 +43,7 @@ def t_assignTo(t):
 
 def t_ID(t):
     r'[a-zA-Z]+'
+    t.value = t.value.lower()
     return t
 
 def t_INTEGER(t):
@@ -122,13 +123,18 @@ def p_assignTo_def(p):
         global_variables[p[5]] = p[3]
         p[0] = (p[3], p[5])
     else:
-        raise ValueError(f"Variable {p[5]} no se encuentra en global_variables")      
+        p_error(p)  
+    
+        
+success = True
+
 def p_error(p):
-    print(f"Syntax error at '{p.value}'")
+    global success
+    success = False
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nam, y, z,arroz;\nPROCS\nPutCB[|c,b| ASsiGnTo:51,nam;]"
+data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nPutCB[|c,b| ASsignTo:51,naM;]"
 
 lexer.input(data)
 
@@ -138,6 +144,12 @@ while True:
         break
     print(tok)
 
+
 result = parser.parse(data)
 print(result)
 print(global_variables)
+
+if success:
+    print("True")
+else:
+    print("False")
