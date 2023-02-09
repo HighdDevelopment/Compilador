@@ -15,8 +15,9 @@ tokens = (
     'PLECA',
     'assignTo',
     'DOSPUNTOS',
-    'INTEGER'
-    
+    'INTEGER',
+    'put',
+    'chips'
 )
 
 global_variables = {}
@@ -41,15 +42,28 @@ def t_assignTo(t):
     r'(?i)assignTo'
     return t
 
+def t_chips(t):
+    r'(?i)chips|balloons'
+    return t
+
+def t_put(t):
+    r'(?i)put\b'
+    return t
+
 def t_ID(t):
     r'[a-zA-Z]+'
-    t.value = t.value.lower()
-    return t
+    if t.value != 'put':
+        t.value = t.value.lower()
+        return t
+
 
 def t_INTEGER(t):
     r'\d+'
     t.value = int(t.value)
     return t
+
+
+
 
 def t_COMMA(t):
     r','
@@ -110,12 +124,16 @@ def p_ID_list(p):
 
 def p_id_def(p):
     '''id_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET 
-              | ID LBRACKET PLECA ID COMMA ID PLECA assignTo_def RBRACKET '''
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def RBRACKET 
+              | ID LBRACKET PLECA ID COMMA ID PLECA function_def function_def RBRACKET '''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:
         p[0] = (p[3], p[5], p[9])
 
+def p_functions_def(p):
+    """function_def : assignTo_def
+                    | put_def"""
 
 def p_assignTo_def(p):
     'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID SEMICOLON'
@@ -124,7 +142,10 @@ def p_assignTo_def(p):
         p[0] = (p[3], p[5])
     else:
         p_error(p)  
-    
+
+def p_put_def(p):
+    """put_def : put DOSPUNTOS ID COMMA chips SEMICOLON
+               | put DOSPUNTOS INTEGER COMMA chips SEMICOLON"""
         
 success = True
 
@@ -134,7 +155,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nPutCB[|c,b| ASsignTo:51,naM;]"
+data = "RoBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nputCB[|c,b| assignto: 1,nam; put: 5,balloons;]"
 
 lexer.input(data)
 
