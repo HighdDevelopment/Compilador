@@ -127,6 +127,7 @@ def t_ID(t):
         return t
 
 
+
 def t_INTEGER(t):
     r'\d+'
     t.value = int(t.value)
@@ -194,12 +195,23 @@ def p_bloque_def(p):
                   | bloque_def id_def"""
 
 def p_id_def(p):
-    '''id_def : ID LBRACKET PLECA ID COMMA ID PLECA RBRACKET 
-              | ID LBRACKET PLECA ID COMMA ID PLECA func_def RBRACKET '''
+    '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET'''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:
         p[0] = (p[3], p[5], p[9])
+
+def p_id_func(p):
+    '''id_func : ID
+               | ID COMMA id_func
+               |
+    '''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    elif len(p) == 4:
+        p[0] = [p[1]] + p[3]
+    elif len(p) == 1:
+        p[0] = []
 
 def p_func_def(p):
     """
@@ -278,7 +290,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[|c,b| move: 1;assignTo: 1, y]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[| | move: 1]"
 
 lexer.input(data)
 
