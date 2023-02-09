@@ -1,6 +1,6 @@
 import ply.lex as lex
 import ply.yacc as yacc
-
+import re 
 
 
 tokens = (
@@ -25,20 +25,20 @@ global_variables = {}
 
 
 def t_ROBOT_R(t):
-    r'ROBOT_R'
+    r'(?i)ROBOT_R'
     return t
 
 def t_VARS(t):
-    r'VARS'
+    r'(?i)VARS'
     return t
 
 def t_PROCS(t):
-    r'PROCS'
+    r'(?i)PROCS'
     return t
 
 
 def t_assignTo(t):
-    r'assignTo'
+    r'(?i)assignTo'
     return t
 
 def t_ID(t):
@@ -128,7 +128,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nam, y, z,arroz;\nPROCS\nPutCB[|c,b| assignTo:51,nam;]"
+data = "ROBOT_R\nVARS nam, y, z,arroz;\nPROCS\nPutCB[|c,b| ASsiGnTo:51,nam;]"
 
 lexer.input(data)
 
