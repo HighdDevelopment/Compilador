@@ -44,11 +44,11 @@ tokens = (
     'canjumpindir',
     'canmovetothe',
     'canjumptothe',
-    'not'
+    'not',
+    'repeat'
 )
 
 global_variables = {}
-
 
 
 
@@ -94,6 +94,10 @@ def t_do(t):
 
 def t_put(t):
     r'(?i)put\b'
+    return t
+
+def t_repeat(t):
+    r'(?i)repeat\b'
     return t
 
 def t_pick(t):
@@ -269,6 +273,7 @@ def p_id_def(p):
 def p_id_func(p):
     '''id_func : ID
                | ID COMMA id_func
+               | 
     '''
     if len(p) == 2:
         p[0] = [p[1]]
@@ -281,20 +286,30 @@ def p_final_def(p):
 
 def p_func_def(p):
     """
-    func_def : function_def
-             | func_def SEMICOLON function_def
+    func_def : bloques_def
              | if_else_def
              | while_def
+             | repeat_def
     """
 
+def p_bloques_def(p):
+    '''bloques_def : function_def
+                   | bloques_def SEMICOLON function_def'''
+
+def p_repeat_def(p):
+    '''repeat_def : repeat DOSPUNTOS conditions_def LBRACKET bloques_def RBRACKET
+                  | repeat DOSPUNTOS conditions_def LBRACKET if_else_def RBRACKET
+                  | repeat DOSPUNTOS conditions_def LBRACKET while_def RBRACKET
+                  | repeat DOSPUNTOS conditions_def LBRACKET repeat_def RBRACKET'''
+
 def p_if_else_def(t):
-    '''if_else_def : if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    '''if_else_def : if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET bloques_def RBRACKET else DOSPUNTOS LBRACKET bloques_def RBRACKET
+                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET bloques_def RBRACKET
+                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET bloques_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
                    | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET'''
 
 def p_while_def(t):
-    '''while_def : while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET function_def RBRACKET
+    '''while_def : while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET bloques_def RBRACKET
                  | while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
                  | while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET while_def RBRACKET'''
 
@@ -407,7 +422,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] [JUAN:1,2 man:3,2]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] repeata[||repeat: not [nop:]][JUAN:1,2 man:3,2]"
 
 lexer.input(data)
 
