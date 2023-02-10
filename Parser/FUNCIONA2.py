@@ -36,7 +36,15 @@ tokens = (
     'then',
     'else',
     'while',
-    'do'
+    'do',
+    'facing',
+    'canput',
+    'canpick',
+    'canmoveindir',
+    'canjumpindir',
+    'canmovetothe',
+    'canjumptothe',
+    'not'
 )
 
 global_variables = {}
@@ -55,8 +63,6 @@ def t_VARS(t):
 def t_PROCS(t):
     r'(?i)PROCS'
     return t
-
-
 
 def t_assignTo(t):
     r'(?i)assignTo\b'
@@ -144,6 +150,40 @@ def t_face(t):
 
 def t_nop(t):
     r'(?i)nop\b'
+    return t
+
+#CONDITIONAL:
+def t_facing(t):
+    r'(?i)facing\b'
+    return t
+
+def t_canput(t):
+    r'(?i)canput\b'
+    return t
+
+def t_canpick(t):
+    r'(?i)canpick\b'
+    return t
+
+def t_canmovetothe(t):
+    r'(?i)canmovetothe\b'
+    return t
+
+def t_canjumptothe(t):
+    r'(?i)canjumptothe\b'
+    return t
+ 
+
+def t_canmoveindir(t):
+    r'(?i)canmoveindir\b'
+    return t
+
+def t_canjumpindir(t):
+    r'(?i)canjumpindir\b'
+    return t
+
+def t_not(t):
+    r'(?i)not\b'
     return t
 
 def t_ID(t):
@@ -248,17 +288,17 @@ def p_func_def(p):
     """
 
 def p_if_else_def(t):
-    '''if_else_def : if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET'''
+    '''if_else_def : if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+                   | if DOSPUNTOS conditions_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET'''
 
 def p_while_def(t):
-    '''while_def : while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
-                 | while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
-                 | while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET'''
+    '''while_def : while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET function_def RBRACKET
+                 | while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+                 | while DOSPUNTOS conditions_def do DOSPUNTOS LBRACKET while_def RBRACKET'''
 
-def p_functions_def(p):
+def p_function_def(p):
     """function_def : assignTo_def
                     | put_def
                     | moveandjumptothe_def
@@ -268,7 +308,6 @@ def p_functions_def(p):
                     | turn_def
                     | face_def
                     | nop_def"""
-
 
 
 def p_assignTo_def(p):
@@ -320,7 +359,45 @@ def p_face_def(p):
 
 def p_nop_def(p):
     """nop_def : nop DOSPUNTOS """
+
+
+#CONDITIONS
+
+def p_conditions_def(p):
+    """conditions_def : facing_def
+                    | canputpick_def
+                    | canmoveandjumptothe_def
+                    | canmoveandjumpindir_def
+                    | not_def"""
+
+
+def p_facing_def(p):
+    """facing_def : facing DOSPUNTOS CARDINAL """
+
+def p_canputpick_def(p):
+    """canputpick_def : canput DOSPUNTOS ID COMMA ITEMS 
+               | canput DOSPUNTOS INTEGER COMMA ITEMS 
+               | canpick DOSPUNTOS INTEGER COMMA ITEMS 
+               | canpick DOSPUNTOS ID COMMA ITEMS """
+
+def p_canmoveandjumpindir_def(p):
+    """canmoveandjumpindir_def : canmoveindir DOSPUNTOS ID COMMA CARDINAL 
+               | canmoveindir DOSPUNTOS INTEGER COMMA CARDINAL 
+               | canjumpindir DOSPUNTOS INTEGER COMMA CARDINAL 
+               | canjumpindir DOSPUNTOS ID COMMA CARDINAL """
     
+def p_canmoveandjumptothe_def(p):
+    """canmoveandjumptothe_def : canmovetothe DOSPUNTOS ID COMMA DIRECTION 
+               | canmovetothe DOSPUNTOS INTEGER COMMA DIRECTION 
+               | canjumptothe DOSPUNTOS INTEGER COMMA DIRECTION 
+               | canjumptothe DOSPUNTOS ID COMMA DIRECTION 
+               | canmovetothe DOSPUNTOS ID COMMA LEFTANDRIGHT 
+               | canmovetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT 
+               | canjumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT 
+               | canjumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT """   
+
+def p_not_def(p):
+    """not_def : not DOSPUNTOS """
 
 success = True
 
@@ -330,7 +407,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]] [JUAN:1,2 man:3,2a]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: not: then: [if: not: then: [nop:] else: [nop:]] else: [if: not: then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not: do:[while: not: do:[nop:]]] [JUAN:1,2 man:3,2]"
 
 lexer.input(data)
 
