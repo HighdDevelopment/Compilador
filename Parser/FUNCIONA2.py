@@ -197,7 +197,8 @@ lexer = lex.lex()
 
 def p_prog(p):
     '''prog : ROBOT_R var_def PROCS
-            | ROBOT_R var_def PROCS bloque_def'''
+            | ROBOT_R var_def PROCS bloque_def
+            | ROBOT_R var_def PROCS bloque_def LBRACKET final_def RBRACKET'''
     p[0] = p[2]
 
 def p_var_def(p):
@@ -233,6 +234,10 @@ def p_id_func(p):
         p[0] = [p[1]]
     elif len(p) == 4:
         p[0] = [p[1]] + p[3]
+
+def p_final_def(p):
+    '''final_def : ID DOSPUNTOS INTEGER COMMA INTEGER 
+                 | final_def ID DOSPUNTOS INTEGER COMMA INTEGER '''
 
 def p_func_def(p):
     """
@@ -325,7 +330,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]] [JUAN:1,2]"
 
 lexer.input(data)
 
