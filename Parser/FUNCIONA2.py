@@ -33,8 +33,8 @@ tokens = (
     'face',
     'nop',
     'if',
-    'else',
-    'then'
+    'then',
+    'else'
 )
 
 global_variables = {}
@@ -55,6 +55,7 @@ def t_PROCS(t):
     return t
 
 
+
 def t_assignTo(t):
     r'(?i)assignTo\b'
     return t
@@ -67,14 +68,13 @@ def t_if(t):
     r'(?i)if\b'
     return t
 
-def t_else(t):
-    r'(?i)else\b'
-    return t
-
 def t_then(t):
     r'(?i)then\b'
     return t
 
+def t_else(t):
+    r'(?i)else\b'
+    return t
 
 def t_put(t):
     r'(?i)put\b'
@@ -141,8 +141,6 @@ def t_ID(t):
     if t.value not in tokens:
         t.value = t.value.lower()
         return t
-
-
 
 def t_INTEGER(t):
     r'\d+'
@@ -211,8 +209,7 @@ def p_bloque_def(p):
                   | bloque_def id_def"""
 
 def p_id_def(p):
-    '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET
-              | ID LBRACKET PLECA id_func PLECA if_else_def RBRACKET'''
+    '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET'''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:
@@ -221,29 +218,24 @@ def p_id_def(p):
 def p_id_func(p):
     '''id_func : ID
                | ID COMMA id_func
-               |
     '''
     if len(p) == 2:
         p[0] = [p[1]]
     elif len(p) == 4:
         p[0] = [p[1]] + p[3]
-    elif len(p) == 1:
-        p[0] = []
 
 def p_func_def(p):
     """
     func_def : function_def
              | func_def SEMICOLON function_def
+             | if_else_def
     """
 
-def p_then_block(p):
-    '''then_block : LBRACKET func_def RBRACKET
-                  | LBRACKET if_else_def RBRACKET'''
-
-def p_if_else_def(p):
-    '''if_else_def : if DOSPUNTOS function_def then DOSPUNTOS then_block
-                   | if DOSPUNTOS function_def then DOSPUNTOS then_block else DOSPUNTOS then_block'''
-
+def p_if_else_def(t):
+    '''if_else_def : if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+                   | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET'''
 
 def p_functions_def(p):
     """function_def : assignTo_def
@@ -317,7 +309,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ | | if : MoveInDir : 1 , west then: [ MoveInDir : 1 ,west ] else : [nop :] ]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] "
 
 lexer.input(data)
 
