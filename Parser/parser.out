@@ -16,102 +16,109 @@ Rule 10    id_func -> ID COMMA id_func
 Rule 11    func_def -> function_def
 Rule 12    func_def -> func_def SEMICOLON function_def
 Rule 13    func_def -> if_else_def
-Rule 14    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-Rule 15    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-Rule 16    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-Rule 17    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-Rule 18    function_def -> assignTo_def
-Rule 19    function_def -> put_def
-Rule 20    function_def -> moveandjumptothe_def
-Rule 21    function_def -> moveandjumpindir_def
-Rule 22    function_def -> move_def
-Rule 23    function_def -> goto_def
-Rule 24    function_def -> turn_def
-Rule 25    function_def -> face_def
-Rule 26    function_def -> nop_def
-Rule 27    assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID
-Rule 28    put_def -> put DOSPUNTOS ID COMMA ITEMS
-Rule 29    put_def -> put DOSPUNTOS INTEGER COMMA ITEMS
-Rule 30    put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS
-Rule 31    put_def -> pick DOSPUNTOS ID COMMA ITEMS
-Rule 32    moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION
-Rule 33    moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-Rule 34    moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-Rule 35    moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION
-Rule 36    moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-Rule 37    moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-Rule 38    moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-Rule 39    moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-Rule 40    moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL
-Rule 41    moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-Rule 42    moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-Rule 43    moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL
-Rule 44    move_def -> move DOSPUNTOS ID
-Rule 45    move_def -> move DOSPUNTOS INTEGER
-Rule 46    goto_def -> goto DOSPUNTOS ID COMMA ID
-Rule 47    goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER
-Rule 48    goto_def -> goto DOSPUNTOS ID COMMA INTEGER
-Rule 49    goto_def -> goto DOSPUNTOS INTEGER COMMA ID
-Rule 50    turn_def -> turn DOSPUNTOS DIRECTION_TURN
-Rule 51    turn_def -> turn DOSPUNTOS LEFTANDRIGHT
-Rule 52    face_def -> face DOSPUNTOS CARDINAL
-Rule 53    nop_def -> nop DOSPUNTOS
+Rule 14    func_def -> while_def
+Rule 15    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+Rule 16    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+Rule 17    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+Rule 18    if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+Rule 19    while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+Rule 20    while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+Rule 21    while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET
+Rule 22    function_def -> assignTo_def
+Rule 23    function_def -> put_def
+Rule 24    function_def -> moveandjumptothe_def
+Rule 25    function_def -> moveandjumpindir_def
+Rule 26    function_def -> move_def
+Rule 27    function_def -> goto_def
+Rule 28    function_def -> turn_def
+Rule 29    function_def -> face_def
+Rule 30    function_def -> nop_def
+Rule 31    assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID
+Rule 32    put_def -> put DOSPUNTOS ID COMMA ITEMS
+Rule 33    put_def -> put DOSPUNTOS INTEGER COMMA ITEMS
+Rule 34    put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS
+Rule 35    put_def -> pick DOSPUNTOS ID COMMA ITEMS
+Rule 36    moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION
+Rule 37    moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+Rule 38    moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+Rule 39    moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION
+Rule 40    moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+Rule 41    moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+Rule 42    moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+Rule 43    moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+Rule 44    moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL
+Rule 45    moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+Rule 46    moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+Rule 47    moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL
+Rule 48    move_def -> move DOSPUNTOS ID
+Rule 49    move_def -> move DOSPUNTOS INTEGER
+Rule 50    goto_def -> goto DOSPUNTOS ID COMMA ID
+Rule 51    goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER
+Rule 52    goto_def -> goto DOSPUNTOS ID COMMA INTEGER
+Rule 53    goto_def -> goto DOSPUNTOS INTEGER COMMA ID
+Rule 54    turn_def -> turn DOSPUNTOS DIRECTION_TURN
+Rule 55    turn_def -> turn DOSPUNTOS LEFTANDRIGHT
+Rule 56    face_def -> face DOSPUNTOS CARDINAL
+Rule 57    nop_def -> nop DOSPUNTOS
 
 Terminals, with rules where they appear
 
-CARDINAL             : 40 41 42 43 52
-COMMA                : 5 10 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 46 47 48 49
-DIRECTION            : 32 33 34 35
-DIRECTION_TURN       : 50
-DOSPUNTOS            : 14 14 14 15 15 15 16 16 16 17 17 17 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53
-ID                   : 4 5 8 9 10 27 28 31 32 35 36 39 40 43 44 46 46 48 49
-INTEGER              : 27 29 30 33 34 37 38 41 42 45 47 47 48 49
-ITEMS                : 28 29 30 31
-LBRACKET             : 8 14 14 15 15 16 16 17 17
-LEFTANDRIGHT         : 36 37 38 39 51
+CARDINAL             : 44 45 46 47 56
+COMMA                : 5 10 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 50 51 52 53
+DIRECTION            : 36 37 38 39
+DIRECTION_TURN       : 54
+DOSPUNTOS            : 15 15 15 16 16 16 17 17 17 18 18 18 19 19 20 20 21 21 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57
+ID                   : 4 5 8 9 10 31 32 35 36 39 40 43 44 47 48 50 50 52 53
+INTEGER              : 31 33 34 37 38 41 42 45 46 49 51 51 52 53
+ITEMS                : 32 33 34 35
+LBRACKET             : 8 15 15 16 16 17 17 18 18 19 20 21
+LEFTANDRIGHT         : 40 41 42 43 55
 PLECA                : 8 8
 PROCS                : 1 2
-RBRACKET             : 8 14 14 15 15 16 16 17 17
+RBRACKET             : 8 15 15 16 16 17 17 18 18 19 20 21
 ROBOT_R              : 1 2
 SEMICOLON            : 3 12
 VARS                 : 3
-assignTo             : 27
-else                 : 14 15 16 17
+assignTo             : 31
+do                   : 19 20 21
+else                 : 15 16 17 18
 error                : 
-face                 : 52
-goto                 : 46 47 48 49
-if                   : 14 15 16 17
-jumpindir            : 42 43
-jumptothe            : 34 35 38 39
-move                 : 44 45
-moveindir            : 40 41
-movetothe            : 32 33 36 37
-nop                  : 53
-pick                 : 30 31
-put                  : 28 29
-then                 : 14 15 16 17
-turn                 : 50 51
+face                 : 56
+goto                 : 50 51 52 53
+if                   : 15 16 17 18
+jumpindir            : 46 47
+jumptothe            : 38 39 42 43
+move                 : 48 49
+moveindir            : 44 45
+movetothe            : 36 37 40 41
+nop                  : 57
+pick                 : 34 35
+put                  : 32 33
+then                 : 15 16 17 18
+turn                 : 54 55
+while                : 19 20 21
 
 Nonterminals, with rules where they appear
 
 ID_list              : 3 5
-assignTo_def         : 18
+assignTo_def         : 22
 bloque_def           : 2 7
-face_def             : 25
+face_def             : 29
 func_def             : 8 12
-function_def         : 11 12 14 14 14 15 15 16 16 17
-goto_def             : 23
+function_def         : 11 12 15 15 15 16 16 17 17 18 19 19 20 21
+goto_def             : 27
 id_def               : 6 7
 id_func              : 8 10
-if_else_def          : 13 15 16 17 17
-move_def             : 22
-moveandjumpindir_def : 21
-moveandjumptothe_def : 20
-nop_def              : 26
+if_else_def          : 13 16 17 18 18 20
+move_def             : 26
+moveandjumpindir_def : 25
+moveandjumptothe_def : 24
+nop_def              : 30
 prog                 : 0
-put_def              : 19
-turn_def             : 24
+put_def              : 23
+turn_def             : 28
 var_def              : 1 2
+while_def            : 14 21
 
 Parsing method: LALR
 
@@ -295,73 +302,79 @@ state 20
     (11) func_def -> . function_def
     (12) func_def -> . func_def SEMICOLON function_def
     (13) func_def -> . if_else_def
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (14) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
+    (14) func_def -> . while_def
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (19) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    if              shift and go to state 34
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
+    if              shift and go to state 35
+    while           shift and go to state 36
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
     func_def                       shift and go to state 22
     function_def                   shift and go to state 23
     if_else_def                    shift and go to state 24
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
+    while_def                      shift and go to state 25
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 21
 
@@ -375,8 +388,8 @@ state 22
     (8) id_def -> ID LBRACKET PLECA id_func PLECA func_def . RBRACKET
     (12) func_def -> func_def . SEMICOLON function_def
 
-    RBRACKET        shift and go to state 47
-    SEMICOLON       shift and go to state 48
+    RBRACKET        shift and go to state 49
+    SEMICOLON       shift and go to state 50
 
 
 state 23
@@ -397,195 +410,221 @@ state 24
 
 state 25
 
-    (18) function_def -> assignTo_def .
+    (14) func_def -> while_def .
 
-    RBRACKET        reduce using rule 18 (function_def -> assignTo_def .)
-    SEMICOLON       reduce using rule 18 (function_def -> assignTo_def .)
-    then            reduce using rule 18 (function_def -> assignTo_def .)
+    RBRACKET        reduce using rule 14 (func_def -> while_def .)
+    SEMICOLON       reduce using rule 14 (func_def -> while_def .)
 
 
 state 26
 
-    (19) function_def -> put_def .
+    (22) function_def -> assignTo_def .
 
-    RBRACKET        reduce using rule 19 (function_def -> put_def .)
-    SEMICOLON       reduce using rule 19 (function_def -> put_def .)
-    then            reduce using rule 19 (function_def -> put_def .)
+    RBRACKET        reduce using rule 22 (function_def -> assignTo_def .)
+    SEMICOLON       reduce using rule 22 (function_def -> assignTo_def .)
+    then            reduce using rule 22 (function_def -> assignTo_def .)
+    do              reduce using rule 22 (function_def -> assignTo_def .)
 
 
 state 27
 
-    (20) function_def -> moveandjumptothe_def .
+    (23) function_def -> put_def .
 
-    RBRACKET        reduce using rule 20 (function_def -> moveandjumptothe_def .)
-    SEMICOLON       reduce using rule 20 (function_def -> moveandjumptothe_def .)
-    then            reduce using rule 20 (function_def -> moveandjumptothe_def .)
+    RBRACKET        reduce using rule 23 (function_def -> put_def .)
+    SEMICOLON       reduce using rule 23 (function_def -> put_def .)
+    then            reduce using rule 23 (function_def -> put_def .)
+    do              reduce using rule 23 (function_def -> put_def .)
 
 
 state 28
 
-    (21) function_def -> moveandjumpindir_def .
+    (24) function_def -> moveandjumptothe_def .
 
-    RBRACKET        reduce using rule 21 (function_def -> moveandjumpindir_def .)
-    SEMICOLON       reduce using rule 21 (function_def -> moveandjumpindir_def .)
-    then            reduce using rule 21 (function_def -> moveandjumpindir_def .)
+    RBRACKET        reduce using rule 24 (function_def -> moveandjumptothe_def .)
+    SEMICOLON       reduce using rule 24 (function_def -> moveandjumptothe_def .)
+    then            reduce using rule 24 (function_def -> moveandjumptothe_def .)
+    do              reduce using rule 24 (function_def -> moveandjumptothe_def .)
 
 
 state 29
 
-    (22) function_def -> move_def .
+    (25) function_def -> moveandjumpindir_def .
 
-    RBRACKET        reduce using rule 22 (function_def -> move_def .)
-    SEMICOLON       reduce using rule 22 (function_def -> move_def .)
-    then            reduce using rule 22 (function_def -> move_def .)
+    RBRACKET        reduce using rule 25 (function_def -> moveandjumpindir_def .)
+    SEMICOLON       reduce using rule 25 (function_def -> moveandjumpindir_def .)
+    then            reduce using rule 25 (function_def -> moveandjumpindir_def .)
+    do              reduce using rule 25 (function_def -> moveandjumpindir_def .)
 
 
 state 30
 
-    (23) function_def -> goto_def .
+    (26) function_def -> move_def .
 
-    RBRACKET        reduce using rule 23 (function_def -> goto_def .)
-    SEMICOLON       reduce using rule 23 (function_def -> goto_def .)
-    then            reduce using rule 23 (function_def -> goto_def .)
+    RBRACKET        reduce using rule 26 (function_def -> move_def .)
+    SEMICOLON       reduce using rule 26 (function_def -> move_def .)
+    then            reduce using rule 26 (function_def -> move_def .)
+    do              reduce using rule 26 (function_def -> move_def .)
 
 
 state 31
 
-    (24) function_def -> turn_def .
+    (27) function_def -> goto_def .
 
-    RBRACKET        reduce using rule 24 (function_def -> turn_def .)
-    SEMICOLON       reduce using rule 24 (function_def -> turn_def .)
-    then            reduce using rule 24 (function_def -> turn_def .)
+    RBRACKET        reduce using rule 27 (function_def -> goto_def .)
+    SEMICOLON       reduce using rule 27 (function_def -> goto_def .)
+    then            reduce using rule 27 (function_def -> goto_def .)
+    do              reduce using rule 27 (function_def -> goto_def .)
 
 
 state 32
 
-    (25) function_def -> face_def .
+    (28) function_def -> turn_def .
 
-    RBRACKET        reduce using rule 25 (function_def -> face_def .)
-    SEMICOLON       reduce using rule 25 (function_def -> face_def .)
-    then            reduce using rule 25 (function_def -> face_def .)
+    RBRACKET        reduce using rule 28 (function_def -> turn_def .)
+    SEMICOLON       reduce using rule 28 (function_def -> turn_def .)
+    then            reduce using rule 28 (function_def -> turn_def .)
+    do              reduce using rule 28 (function_def -> turn_def .)
 
 
 state 33
 
-    (26) function_def -> nop_def .
+    (29) function_def -> face_def .
 
-    RBRACKET        reduce using rule 26 (function_def -> nop_def .)
-    SEMICOLON       reduce using rule 26 (function_def -> nop_def .)
-    then            reduce using rule 26 (function_def -> nop_def .)
+    RBRACKET        reduce using rule 29 (function_def -> face_def .)
+    SEMICOLON       reduce using rule 29 (function_def -> face_def .)
+    then            reduce using rule 29 (function_def -> face_def .)
+    do              reduce using rule 29 (function_def -> face_def .)
 
 
 state 34
 
-    (14) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (30) function_def -> nop_def .
 
-    DOSPUNTOS       shift and go to state 49
+    RBRACKET        reduce using rule 30 (function_def -> nop_def .)
+    SEMICOLON       reduce using rule 30 (function_def -> nop_def .)
+    then            reduce using rule 30 (function_def -> nop_def .)
+    do              reduce using rule 30 (function_def -> nop_def .)
 
 
 state 35
 
-    (27) assignTo_def -> assignTo . DOSPUNTOS INTEGER COMMA ID
-
-    DOSPUNTOS       shift and go to state 50
-
-
-state 36
-
-    (28) put_def -> put . DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> put . DOSPUNTOS INTEGER COMMA ITEMS
+    (15) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if . DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
     DOSPUNTOS       shift and go to state 51
 
 
-state 37
+state 36
 
-    (30) put_def -> pick . DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> pick . DOSPUNTOS ID COMMA ITEMS
+    (19) while_def -> while . DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> while . DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> while . DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET
 
     DOSPUNTOS       shift and go to state 52
 
 
-state 38
+state 37
 
-    (32) moveandjumptothe_def -> movetothe . DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> movetothe . DOSPUNTOS INTEGER COMMA DIRECTION
-    (36) moveandjumptothe_def -> movetothe . DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> movetothe . DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (31) assignTo_def -> assignTo . DOSPUNTOS INTEGER COMMA ID
 
     DOSPUNTOS       shift and go to state 53
 
 
-state 39
+state 38
 
-    (34) moveandjumptothe_def -> jumptothe . DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> jumptothe . DOSPUNTOS ID COMMA DIRECTION
-    (38) moveandjumptothe_def -> jumptothe . DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> jumptothe . DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (32) put_def -> put . DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> put . DOSPUNTOS INTEGER COMMA ITEMS
 
     DOSPUNTOS       shift and go to state 54
 
 
-state 40
+state 39
 
-    (40) moveandjumpindir_def -> moveindir . DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> moveindir . DOSPUNTOS INTEGER COMMA CARDINAL
+    (34) put_def -> pick . DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> pick . DOSPUNTOS ID COMMA ITEMS
 
     DOSPUNTOS       shift and go to state 55
 
 
-state 41
+state 40
 
-    (42) moveandjumpindir_def -> jumpindir . DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> jumpindir . DOSPUNTOS ID COMMA CARDINAL
+    (36) moveandjumptothe_def -> movetothe . DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> movetothe . DOSPUNTOS INTEGER COMMA DIRECTION
+    (40) moveandjumptothe_def -> movetothe . DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> movetothe . DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
 
     DOSPUNTOS       shift and go to state 56
 
 
-state 42
+state 41
 
-    (44) move_def -> move . DOSPUNTOS ID
-    (45) move_def -> move . DOSPUNTOS INTEGER
+    (38) moveandjumptothe_def -> jumptothe . DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> jumptothe . DOSPUNTOS ID COMMA DIRECTION
+    (42) moveandjumptothe_def -> jumptothe . DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> jumptothe . DOSPUNTOS ID COMMA LEFTANDRIGHT
 
     DOSPUNTOS       shift and go to state 57
 
 
-state 43
+state 42
 
-    (46) goto_def -> goto . DOSPUNTOS ID COMMA ID
-    (47) goto_def -> goto . DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> goto . DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> goto . DOSPUNTOS INTEGER COMMA ID
+    (44) moveandjumpindir_def -> moveindir . DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> moveindir . DOSPUNTOS INTEGER COMMA CARDINAL
 
     DOSPUNTOS       shift and go to state 58
 
 
-state 44
+state 43
 
-    (50) turn_def -> turn . DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> turn . DOSPUNTOS LEFTANDRIGHT
+    (46) moveandjumpindir_def -> jumpindir . DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> jumpindir . DOSPUNTOS ID COMMA CARDINAL
 
     DOSPUNTOS       shift and go to state 59
 
 
-state 45
+state 44
 
-    (52) face_def -> face . DOSPUNTOS CARDINAL
+    (48) move_def -> move . DOSPUNTOS ID
+    (49) move_def -> move . DOSPUNTOS INTEGER
 
     DOSPUNTOS       shift and go to state 60
 
 
-state 46
+state 45
 
-    (53) nop_def -> nop . DOSPUNTOS
+    (50) goto_def -> goto . DOSPUNTOS ID COMMA ID
+    (51) goto_def -> goto . DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> goto . DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> goto . DOSPUNTOS INTEGER COMMA ID
 
     DOSPUNTOS       shift and go to state 61
 
 
+state 46
+
+    (54) turn_def -> turn . DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> turn . DOSPUNTOS LEFTANDRIGHT
+
+    DOSPUNTOS       shift and go to state 62
+
+
 state 47
+
+    (56) face_def -> face . DOSPUNTOS CARDINAL
+
+    DOSPUNTOS       shift and go to state 63
+
+
+state 48
+
+    (57) nop_def -> nop . DOSPUNTOS
+
+    DOSPUNTOS       shift and go to state 64
+
+
+state 49
 
     (8) id_def -> ID LBRACKET PLECA id_func PLECA func_def RBRACKET .
 
@@ -593,248 +632,315 @@ state 47
     $end            reduce using rule 8 (id_def -> ID LBRACKET PLECA id_func PLECA func_def RBRACKET .)
 
 
-state 48
-
-    (12) func_def -> func_def SEMICOLON . function_def
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
-
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
-
-    function_def                   shift and go to state 62
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
-
-state 49
-
-    (14) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
-
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
-
-    function_def                   shift and go to state 63
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
-
 state 50
 
-    (27) assignTo_def -> assignTo DOSPUNTOS . INTEGER COMMA ID
+    (12) func_def -> func_def SEMICOLON . function_def
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    INTEGER         shift and go to state 64
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
+    function_def                   shift and go to state 65
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 51
 
-    (28) put_def -> put DOSPUNTOS . ID COMMA ITEMS
-    (29) put_def -> put DOSPUNTOS . INTEGER COMMA ITEMS
+    (15) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS . function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    ID              shift and go to state 65
-    INTEGER         shift and go to state 66
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
+    function_def                   shift and go to state 66
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 52
 
-    (30) put_def -> pick DOSPUNTOS . INTEGER COMMA ITEMS
-    (31) put_def -> pick DOSPUNTOS . ID COMMA ITEMS
+    (19) while_def -> while DOSPUNTOS . function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> while DOSPUNTOS . function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> while DOSPUNTOS . function_def do DOSPUNTOS LBRACKET while_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    INTEGER         shift and go to state 67
-    ID              shift and go to state 68
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
+    function_def                   shift and go to state 67
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 53
 
-    (32) moveandjumptothe_def -> movetothe DOSPUNTOS . ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> movetothe DOSPUNTOS . INTEGER COMMA DIRECTION
-    (36) moveandjumptothe_def -> movetothe DOSPUNTOS . ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> movetothe DOSPUNTOS . INTEGER COMMA LEFTANDRIGHT
+    (31) assignTo_def -> assignTo DOSPUNTOS . INTEGER COMMA ID
+
+    INTEGER         shift and go to state 68
+
+
+state 54
+
+    (32) put_def -> put DOSPUNTOS . ID COMMA ITEMS
+    (33) put_def -> put DOSPUNTOS . INTEGER COMMA ITEMS
 
     ID              shift and go to state 69
     INTEGER         shift and go to state 70
 
 
-state 54
+state 55
 
-    (34) moveandjumptothe_def -> jumptothe DOSPUNTOS . INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> jumptothe DOSPUNTOS . ID COMMA DIRECTION
-    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS . INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS . ID COMMA LEFTANDRIGHT
+    (34) put_def -> pick DOSPUNTOS . INTEGER COMMA ITEMS
+    (35) put_def -> pick DOSPUNTOS . ID COMMA ITEMS
 
     INTEGER         shift and go to state 71
     ID              shift and go to state 72
 
 
-state 55
+state 56
 
-    (40) moveandjumpindir_def -> moveindir DOSPUNTOS . ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> moveindir DOSPUNTOS . INTEGER COMMA CARDINAL
+    (36) moveandjumptothe_def -> movetothe DOSPUNTOS . ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> movetothe DOSPUNTOS . INTEGER COMMA DIRECTION
+    (40) moveandjumptothe_def -> movetothe DOSPUNTOS . ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> movetothe DOSPUNTOS . INTEGER COMMA LEFTANDRIGHT
 
     ID              shift and go to state 73
     INTEGER         shift and go to state 74
 
 
-state 56
+state 57
 
-    (42) moveandjumpindir_def -> jumpindir DOSPUNTOS . INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> jumpindir DOSPUNTOS . ID COMMA CARDINAL
+    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS . INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS . ID COMMA DIRECTION
+    (42) moveandjumptothe_def -> jumptothe DOSPUNTOS . INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> jumptothe DOSPUNTOS . ID COMMA LEFTANDRIGHT
 
     INTEGER         shift and go to state 75
     ID              shift and go to state 76
 
 
-state 57
+state 58
 
-    (44) move_def -> move DOSPUNTOS . ID
-    (45) move_def -> move DOSPUNTOS . INTEGER
+    (44) moveandjumpindir_def -> moveindir DOSPUNTOS . ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> moveindir DOSPUNTOS . INTEGER COMMA CARDINAL
 
     ID              shift and go to state 77
     INTEGER         shift and go to state 78
 
 
-state 58
-
-    (46) goto_def -> goto DOSPUNTOS . ID COMMA ID
-    (47) goto_def -> goto DOSPUNTOS . INTEGER COMMA INTEGER
-    (48) goto_def -> goto DOSPUNTOS . ID COMMA INTEGER
-    (49) goto_def -> goto DOSPUNTOS . INTEGER COMMA ID
-
-    ID              shift and go to state 79
-    INTEGER         shift and go to state 80
-
-
 state 59
 
-    (50) turn_def -> turn DOSPUNTOS . DIRECTION_TURN
-    (51) turn_def -> turn DOSPUNTOS . LEFTANDRIGHT
+    (46) moveandjumpindir_def -> jumpindir DOSPUNTOS . INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> jumpindir DOSPUNTOS . ID COMMA CARDINAL
 
-    DIRECTION_TURN  shift and go to state 81
-    LEFTANDRIGHT    shift and go to state 82
+    INTEGER         shift and go to state 79
+    ID              shift and go to state 80
 
 
 state 60
 
-    (52) face_def -> face DOSPUNTOS . CARDINAL
+    (48) move_def -> move DOSPUNTOS . ID
+    (49) move_def -> move DOSPUNTOS . INTEGER
 
-    CARDINAL        shift and go to state 83
+    ID              shift and go to state 81
+    INTEGER         shift and go to state 82
 
 
 state 61
 
-    (53) nop_def -> nop DOSPUNTOS .
+    (50) goto_def -> goto DOSPUNTOS . ID COMMA ID
+    (51) goto_def -> goto DOSPUNTOS . INTEGER COMMA INTEGER
+    (52) goto_def -> goto DOSPUNTOS . ID COMMA INTEGER
+    (53) goto_def -> goto DOSPUNTOS . INTEGER COMMA ID
 
-    RBRACKET        reduce using rule 53 (nop_def -> nop DOSPUNTOS .)
-    SEMICOLON       reduce using rule 53 (nop_def -> nop DOSPUNTOS .)
-    then            reduce using rule 53 (nop_def -> nop DOSPUNTOS .)
+    ID              shift and go to state 83
+    INTEGER         shift and go to state 84
 
 
 state 62
+
+    (54) turn_def -> turn DOSPUNTOS . DIRECTION_TURN
+    (55) turn_def -> turn DOSPUNTOS . LEFTANDRIGHT
+
+    DIRECTION_TURN  shift and go to state 85
+    LEFTANDRIGHT    shift and go to state 86
+
+
+state 63
+
+    (56) face_def -> face DOSPUNTOS . CARDINAL
+
+    CARDINAL        shift and go to state 87
+
+
+state 64
+
+    (57) nop_def -> nop DOSPUNTOS .
+
+    RBRACKET        reduce using rule 57 (nop_def -> nop DOSPUNTOS .)
+    SEMICOLON       reduce using rule 57 (nop_def -> nop DOSPUNTOS .)
+    then            reduce using rule 57 (nop_def -> nop DOSPUNTOS .)
+    do              reduce using rule 57 (nop_def -> nop DOSPUNTOS .)
+
+
+state 65
 
     (12) func_def -> func_def SEMICOLON function_def .
 
@@ -842,833 +948,1008 @@ state 62
     SEMICOLON       reduce using rule 12 (func_def -> func_def SEMICOLON function_def .)
 
 
-state 63
-
-    (14) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-
-    then            shift and go to state 84
-
-
-state 64
-
-    (27) assignTo_def -> assignTo DOSPUNTOS INTEGER . COMMA ID
-
-    COMMA           shift and go to state 85
-
-
-state 65
-
-    (28) put_def -> put DOSPUNTOS ID . COMMA ITEMS
-
-    COMMA           shift and go to state 86
-
-
 state 66
 
-    (29) put_def -> put DOSPUNTOS INTEGER . COMMA ITEMS
+    (15) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def . then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    COMMA           shift and go to state 87
+    then            shift and go to state 88
 
 
 state 67
 
-    (30) put_def -> pick DOSPUNTOS INTEGER . COMMA ITEMS
+    (19) while_def -> while DOSPUNTOS function_def . do DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> while DOSPUNTOS function_def . do DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> while DOSPUNTOS function_def . do DOSPUNTOS LBRACKET while_def RBRACKET
 
-    COMMA           shift and go to state 88
+    do              shift and go to state 89
 
 
 state 68
 
-    (31) put_def -> pick DOSPUNTOS ID . COMMA ITEMS
-
-    COMMA           shift and go to state 89
-
-
-state 69
-
-    (32) moveandjumptothe_def -> movetothe DOSPUNTOS ID . COMMA DIRECTION
-    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID . COMMA LEFTANDRIGHT
+    (31) assignTo_def -> assignTo DOSPUNTOS INTEGER . COMMA ID
 
     COMMA           shift and go to state 90
 
 
-state 70
+state 69
 
-    (33) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER . COMMA DIRECTION
-    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER . COMMA LEFTANDRIGHT
+    (32) put_def -> put DOSPUNTOS ID . COMMA ITEMS
 
     COMMA           shift and go to state 91
 
 
-state 71
+state 70
 
-    (34) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER . COMMA DIRECTION
-    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER . COMMA LEFTANDRIGHT
+    (33) put_def -> put DOSPUNTOS INTEGER . COMMA ITEMS
 
     COMMA           shift and go to state 92
 
 
-state 72
+state 71
 
-    (35) moveandjumptothe_def -> jumptothe DOSPUNTOS ID . COMMA DIRECTION
-    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID . COMMA LEFTANDRIGHT
+    (34) put_def -> pick DOSPUNTOS INTEGER . COMMA ITEMS
 
     COMMA           shift and go to state 93
 
 
-state 73
+state 72
 
-    (40) moveandjumpindir_def -> moveindir DOSPUNTOS ID . COMMA CARDINAL
+    (35) put_def -> pick DOSPUNTOS ID . COMMA ITEMS
 
     COMMA           shift and go to state 94
 
 
-state 74
+state 73
 
-    (41) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER . COMMA CARDINAL
+    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID . COMMA DIRECTION
+    (40) moveandjumptothe_def -> movetothe DOSPUNTOS ID . COMMA LEFTANDRIGHT
 
     COMMA           shift and go to state 95
 
 
-state 75
+state 74
 
-    (42) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER . COMMA CARDINAL
+    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER . COMMA DIRECTION
+    (41) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER . COMMA LEFTANDRIGHT
 
     COMMA           shift and go to state 96
 
 
-state 76
+state 75
 
-    (43) moveandjumpindir_def -> jumpindir DOSPUNTOS ID . COMMA CARDINAL
+    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER . COMMA DIRECTION
+    (42) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER . COMMA LEFTANDRIGHT
 
     COMMA           shift and go to state 97
 
 
-state 77
+state 76
 
-    (44) move_def -> move DOSPUNTOS ID .
-
-    RBRACKET        reduce using rule 44 (move_def -> move DOSPUNTOS ID .)
-    SEMICOLON       reduce using rule 44 (move_def -> move DOSPUNTOS ID .)
-    then            reduce using rule 44 (move_def -> move DOSPUNTOS ID .)
-
-
-state 78
-
-    (45) move_def -> move DOSPUNTOS INTEGER .
-
-    RBRACKET        reduce using rule 45 (move_def -> move DOSPUNTOS INTEGER .)
-    SEMICOLON       reduce using rule 45 (move_def -> move DOSPUNTOS INTEGER .)
-    then            reduce using rule 45 (move_def -> move DOSPUNTOS INTEGER .)
-
-
-state 79
-
-    (46) goto_def -> goto DOSPUNTOS ID . COMMA ID
-    (48) goto_def -> goto DOSPUNTOS ID . COMMA INTEGER
+    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID . COMMA DIRECTION
+    (43) moveandjumptothe_def -> jumptothe DOSPUNTOS ID . COMMA LEFTANDRIGHT
 
     COMMA           shift and go to state 98
 
 
-state 80
+state 77
 
-    (47) goto_def -> goto DOSPUNTOS INTEGER . COMMA INTEGER
-    (49) goto_def -> goto DOSPUNTOS INTEGER . COMMA ID
+    (44) moveandjumpindir_def -> moveindir DOSPUNTOS ID . COMMA CARDINAL
 
     COMMA           shift and go to state 99
 
 
+state 78
+
+    (45) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER . COMMA CARDINAL
+
+    COMMA           shift and go to state 100
+
+
+state 79
+
+    (46) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER . COMMA CARDINAL
+
+    COMMA           shift and go to state 101
+
+
+state 80
+
+    (47) moveandjumpindir_def -> jumpindir DOSPUNTOS ID . COMMA CARDINAL
+
+    COMMA           shift and go to state 102
+
+
 state 81
 
-    (50) turn_def -> turn DOSPUNTOS DIRECTION_TURN .
+    (48) move_def -> move DOSPUNTOS ID .
 
-    RBRACKET        reduce using rule 50 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
-    SEMICOLON       reduce using rule 50 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
-    then            reduce using rule 50 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
+    RBRACKET        reduce using rule 48 (move_def -> move DOSPUNTOS ID .)
+    SEMICOLON       reduce using rule 48 (move_def -> move DOSPUNTOS ID .)
+    then            reduce using rule 48 (move_def -> move DOSPUNTOS ID .)
+    do              reduce using rule 48 (move_def -> move DOSPUNTOS ID .)
 
 
 state 82
 
-    (51) turn_def -> turn DOSPUNTOS LEFTANDRIGHT .
+    (49) move_def -> move DOSPUNTOS INTEGER .
 
-    RBRACKET        reduce using rule 51 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
-    SEMICOLON       reduce using rule 51 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
-    then            reduce using rule 51 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
+    RBRACKET        reduce using rule 49 (move_def -> move DOSPUNTOS INTEGER .)
+    SEMICOLON       reduce using rule 49 (move_def -> move DOSPUNTOS INTEGER .)
+    then            reduce using rule 49 (move_def -> move DOSPUNTOS INTEGER .)
+    do              reduce using rule 49 (move_def -> move DOSPUNTOS INTEGER .)
 
 
 state 83
 
-    (52) face_def -> face DOSPUNTOS CARDINAL .
+    (50) goto_def -> goto DOSPUNTOS ID . COMMA ID
+    (52) goto_def -> goto DOSPUNTOS ID . COMMA INTEGER
 
-    RBRACKET        reduce using rule 52 (face_def -> face DOSPUNTOS CARDINAL .)
-    SEMICOLON       reduce using rule 52 (face_def -> face DOSPUNTOS CARDINAL .)
-    then            reduce using rule 52 (face_def -> face DOSPUNTOS CARDINAL .)
+    COMMA           shift and go to state 103
 
 
 state 84
 
-    (14) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (51) goto_def -> goto DOSPUNTOS INTEGER . COMMA INTEGER
+    (53) goto_def -> goto DOSPUNTOS INTEGER . COMMA ID
 
-    DOSPUNTOS       shift and go to state 100
+    COMMA           shift and go to state 104
 
 
 state 85
 
-    (27) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA . ID
+    (54) turn_def -> turn DOSPUNTOS DIRECTION_TURN .
 
-    ID              shift and go to state 101
+    RBRACKET        reduce using rule 54 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
+    SEMICOLON       reduce using rule 54 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
+    then            reduce using rule 54 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
+    do              reduce using rule 54 (turn_def -> turn DOSPUNTOS DIRECTION_TURN .)
 
 
 state 86
 
-    (28) put_def -> put DOSPUNTOS ID COMMA . ITEMS
+    (55) turn_def -> turn DOSPUNTOS LEFTANDRIGHT .
 
-    ITEMS           shift and go to state 102
+    RBRACKET        reduce using rule 55 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
+    SEMICOLON       reduce using rule 55 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
+    then            reduce using rule 55 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
+    do              reduce using rule 55 (turn_def -> turn DOSPUNTOS LEFTANDRIGHT .)
 
 
 state 87
 
-    (29) put_def -> put DOSPUNTOS INTEGER COMMA . ITEMS
+    (56) face_def -> face DOSPUNTOS CARDINAL .
 
-    ITEMS           shift and go to state 103
+    RBRACKET        reduce using rule 56 (face_def -> face DOSPUNTOS CARDINAL .)
+    SEMICOLON       reduce using rule 56 (face_def -> face DOSPUNTOS CARDINAL .)
+    then            reduce using rule 56 (face_def -> face DOSPUNTOS CARDINAL .)
+    do              reduce using rule 56 (face_def -> face DOSPUNTOS CARDINAL .)
 
 
 state 88
 
-    (30) put_def -> pick DOSPUNTOS INTEGER COMMA . ITEMS
+    (15) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then . DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    ITEMS           shift and go to state 104
+    DOSPUNTOS       shift and go to state 105
 
 
 state 89
 
-    (31) put_def -> pick DOSPUNTOS ID COMMA . ITEMS
+    (19) while_def -> while DOSPUNTOS function_def do . DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> while DOSPUNTOS function_def do . DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> while DOSPUNTOS function_def do . DOSPUNTOS LBRACKET while_def RBRACKET
 
-    ITEMS           shift and go to state 105
+    DOSPUNTOS       shift and go to state 106
 
 
 state 90
 
-    (32) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA . DIRECTION
-    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA . LEFTANDRIGHT
+    (31) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA . ID
 
-    DIRECTION       shift and go to state 106
-    LEFTANDRIGHT    shift and go to state 107
+    ID              shift and go to state 107
 
 
 state 91
 
-    (33) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA . DIRECTION
-    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA . LEFTANDRIGHT
+    (32) put_def -> put DOSPUNTOS ID COMMA . ITEMS
 
-    DIRECTION       shift and go to state 108
-    LEFTANDRIGHT    shift and go to state 109
+    ITEMS           shift and go to state 108
 
 
 state 92
 
-    (34) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA . DIRECTION
-    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA . LEFTANDRIGHT
+    (33) put_def -> put DOSPUNTOS INTEGER COMMA . ITEMS
 
-    DIRECTION       shift and go to state 110
-    LEFTANDRIGHT    shift and go to state 111
+    ITEMS           shift and go to state 109
 
 
 state 93
 
-    (35) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA . DIRECTION
-    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA . LEFTANDRIGHT
+    (34) put_def -> pick DOSPUNTOS INTEGER COMMA . ITEMS
+
+    ITEMS           shift and go to state 110
+
+
+state 94
+
+    (35) put_def -> pick DOSPUNTOS ID COMMA . ITEMS
+
+    ITEMS           shift and go to state 111
+
+
+state 95
+
+    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA . DIRECTION
+    (40) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA . LEFTANDRIGHT
 
     DIRECTION       shift and go to state 112
     LEFTANDRIGHT    shift and go to state 113
 
 
-state 94
-
-    (40) moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA . CARDINAL
-
-    CARDINAL        shift and go to state 114
-
-
-state 95
-
-    (41) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA . CARDINAL
-
-    CARDINAL        shift and go to state 115
-
-
 state 96
 
-    (42) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA . CARDINAL
+    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA . DIRECTION
+    (41) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA . LEFTANDRIGHT
 
-    CARDINAL        shift and go to state 116
+    DIRECTION       shift and go to state 114
+    LEFTANDRIGHT    shift and go to state 115
 
 
 state 97
 
-    (43) moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA . CARDINAL
+    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA . DIRECTION
+    (42) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA . LEFTANDRIGHT
 
-    CARDINAL        shift and go to state 117
+    DIRECTION       shift and go to state 116
+    LEFTANDRIGHT    shift and go to state 117
 
 
 state 98
 
-    (46) goto_def -> goto DOSPUNTOS ID COMMA . ID
-    (48) goto_def -> goto DOSPUNTOS ID COMMA . INTEGER
+    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA . DIRECTION
+    (43) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA . LEFTANDRIGHT
 
-    ID              shift and go to state 118
-    INTEGER         shift and go to state 119
+    DIRECTION       shift and go to state 118
+    LEFTANDRIGHT    shift and go to state 119
 
 
 state 99
 
-    (47) goto_def -> goto DOSPUNTOS INTEGER COMMA . INTEGER
-    (49) goto_def -> goto DOSPUNTOS INTEGER COMMA . ID
+    (44) moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA . CARDINAL
 
-    INTEGER         shift and go to state 120
-    ID              shift and go to state 121
+    CARDINAL        shift and go to state 120
 
 
 state 100
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (45) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA . CARDINAL
 
-    LBRACKET        shift and go to state 122
+    CARDINAL        shift and go to state 121
 
 
 state 101
 
-    (27) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .
+    (46) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA . CARDINAL
 
-    RBRACKET        reduce using rule 27 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
-    SEMICOLON       reduce using rule 27 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
-    then            reduce using rule 27 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
+    CARDINAL        shift and go to state 122
 
 
 state 102
 
-    (28) put_def -> put DOSPUNTOS ID COMMA ITEMS .
+    (47) moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA . CARDINAL
 
-    RBRACKET        reduce using rule 28 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
-    SEMICOLON       reduce using rule 28 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
-    then            reduce using rule 28 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
+    CARDINAL        shift and go to state 123
 
 
 state 103
 
-    (29) put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .
+    (50) goto_def -> goto DOSPUNTOS ID COMMA . ID
+    (52) goto_def -> goto DOSPUNTOS ID COMMA . INTEGER
 
-    RBRACKET        reduce using rule 29 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
-    SEMICOLON       reduce using rule 29 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
-    then            reduce using rule 29 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
+    ID              shift and go to state 124
+    INTEGER         shift and go to state 125
 
 
 state 104
 
-    (30) put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .
+    (51) goto_def -> goto DOSPUNTOS INTEGER COMMA . INTEGER
+    (53) goto_def -> goto DOSPUNTOS INTEGER COMMA . ID
 
-    RBRACKET        reduce using rule 30 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
-    SEMICOLON       reduce using rule 30 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
-    then            reduce using rule 30 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
+    INTEGER         shift and go to state 126
+    ID              shift and go to state 127
 
 
 state 105
 
-    (31) put_def -> pick DOSPUNTOS ID COMMA ITEMS .
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS . LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    RBRACKET        reduce using rule 31 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
-    SEMICOLON       reduce using rule 31 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
-    then            reduce using rule 31 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
+    LBRACKET        shift and go to state 128
 
 
 state 106
 
-    (32) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .
+    (19) while_def -> while DOSPUNTOS function_def do DOSPUNTOS . LBRACKET function_def RBRACKET
+    (20) while_def -> while DOSPUNTOS function_def do DOSPUNTOS . LBRACKET if_else_def RBRACKET
+    (21) while_def -> while DOSPUNTOS function_def do DOSPUNTOS . LBRACKET while_def RBRACKET
 
-    RBRACKET        reduce using rule 32 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
-    SEMICOLON       reduce using rule 32 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
-    then            reduce using rule 32 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
+    LBRACKET        shift and go to state 129
 
 
 state 107
 
-    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .
+    (31) assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .
 
-    RBRACKET        reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
-    SEMICOLON       reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
-    then            reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    RBRACKET        reduce using rule 31 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
+    SEMICOLON       reduce using rule 31 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
+    then            reduce using rule 31 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
+    do              reduce using rule 31 (assignTo_def -> assignTo DOSPUNTOS INTEGER COMMA ID .)
 
 
 state 108
 
-    (33) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .
+    (32) put_def -> put DOSPUNTOS ID COMMA ITEMS .
 
-    RBRACKET        reduce using rule 33 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
-    SEMICOLON       reduce using rule 33 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
-    then            reduce using rule 33 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    RBRACKET        reduce using rule 32 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
+    SEMICOLON       reduce using rule 32 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
+    then            reduce using rule 32 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
+    do              reduce using rule 32 (put_def -> put DOSPUNTOS ID COMMA ITEMS .)
 
 
 state 109
 
-    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .
+    (33) put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .
 
-    RBRACKET        reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
-    SEMICOLON       reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
-    then            reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    RBRACKET        reduce using rule 33 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
+    SEMICOLON       reduce using rule 33 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
+    then            reduce using rule 33 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
+    do              reduce using rule 33 (put_def -> put DOSPUNTOS INTEGER COMMA ITEMS .)
 
 
 state 110
 
-    (34) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .
+    (34) put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .
 
-    RBRACKET        reduce using rule 34 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
-    SEMICOLON       reduce using rule 34 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
-    then            reduce using rule 34 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    RBRACKET        reduce using rule 34 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
+    SEMICOLON       reduce using rule 34 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
+    then            reduce using rule 34 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
+    do              reduce using rule 34 (put_def -> pick DOSPUNTOS INTEGER COMMA ITEMS .)
 
 
 state 111
 
-    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .
+    (35) put_def -> pick DOSPUNTOS ID COMMA ITEMS .
 
-    RBRACKET        reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
-    SEMICOLON       reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
-    then            reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    RBRACKET        reduce using rule 35 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
+    SEMICOLON       reduce using rule 35 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
+    then            reduce using rule 35 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
+    do              reduce using rule 35 (put_def -> pick DOSPUNTOS ID COMMA ITEMS .)
 
 
 state 112
 
-    (35) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .
+    (36) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .
 
-    RBRACKET        reduce using rule 35 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
-    SEMICOLON       reduce using rule 35 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
-    then            reduce using rule 35 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
+    RBRACKET        reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
+    SEMICOLON       reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
+    then            reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
+    do              reduce using rule 36 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA DIRECTION .)
 
 
 state 113
 
-    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .
+    (40) moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .
 
-    RBRACKET        reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
-    SEMICOLON       reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
-    then            reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    RBRACKET        reduce using rule 40 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    SEMICOLON       reduce using rule 40 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    then            reduce using rule 40 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    do              reduce using rule 40 (moveandjumptothe_def -> movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
 
 
 state 114
 
-    (40) moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .
+    (37) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .
 
-    RBRACKET        reduce using rule 40 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
-    SEMICOLON       reduce using rule 40 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
-    then            reduce using rule 40 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
+    RBRACKET        reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    SEMICOLON       reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    then            reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    do              reduce using rule 37 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA DIRECTION .)
 
 
 state 115
 
-    (41) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .
+    (41) moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .
 
-    RBRACKET        reduce using rule 41 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
-    SEMICOLON       reduce using rule 41 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
-    then            reduce using rule 41 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    RBRACKET        reduce using rule 41 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    SEMICOLON       reduce using rule 41 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    then            reduce using rule 41 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    do              reduce using rule 41 (moveandjumptothe_def -> movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
 
 
 state 116
 
-    (42) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .
+    (38) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .
 
-    RBRACKET        reduce using rule 42 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
-    SEMICOLON       reduce using rule 42 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
-    then            reduce using rule 42 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    RBRACKET        reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    SEMICOLON       reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    then            reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
+    do              reduce using rule 38 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA DIRECTION .)
 
 
 state 117
 
-    (43) moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .
+    (42) moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .
 
-    RBRACKET        reduce using rule 43 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
-    SEMICOLON       reduce using rule 43 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
-    then            reduce using rule 43 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
+    RBRACKET        reduce using rule 42 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    SEMICOLON       reduce using rule 42 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    then            reduce using rule 42 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
+    do              reduce using rule 42 (moveandjumptothe_def -> jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT .)
 
 
 state 118
 
-    (46) goto_def -> goto DOSPUNTOS ID COMMA ID .
+    (39) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .
 
-    RBRACKET        reduce using rule 46 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
-    SEMICOLON       reduce using rule 46 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
-    then            reduce using rule 46 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
+    RBRACKET        reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
+    SEMICOLON       reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
+    then            reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
+    do              reduce using rule 39 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA DIRECTION .)
 
 
 state 119
 
-    (48) goto_def -> goto DOSPUNTOS ID COMMA INTEGER .
+    (43) moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .
 
-    RBRACKET        reduce using rule 48 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
-    SEMICOLON       reduce using rule 48 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
-    then            reduce using rule 48 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
+    RBRACKET        reduce using rule 43 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    SEMICOLON       reduce using rule 43 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    then            reduce using rule 43 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
+    do              reduce using rule 43 (moveandjumptothe_def -> jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT .)
 
 
 state 120
 
-    (47) goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .
+    (44) moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .
 
-    RBRACKET        reduce using rule 47 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
-    SEMICOLON       reduce using rule 47 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
-    then            reduce using rule 47 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
+    RBRACKET        reduce using rule 44 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
+    SEMICOLON       reduce using rule 44 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
+    then            reduce using rule 44 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
+    do              reduce using rule 44 (moveandjumpindir_def -> moveindir DOSPUNTOS ID COMMA CARDINAL .)
 
 
 state 121
 
-    (49) goto_def -> goto DOSPUNTOS INTEGER COMMA ID .
+    (45) moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .
 
-    RBRACKET        reduce using rule 49 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
-    SEMICOLON       reduce using rule 49 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
-    then            reduce using rule 49 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
+    RBRACKET        reduce using rule 45 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    SEMICOLON       reduce using rule 45 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    then            reduce using rule 45 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    do              reduce using rule 45 (moveandjumpindir_def -> moveindir DOSPUNTOS INTEGER COMMA CARDINAL .)
 
 
 state 122
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (14) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
+    (46) moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .
 
-    if              shift and go to state 34
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
+    RBRACKET        reduce using rule 46 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    SEMICOLON       reduce using rule 46 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    then            reduce using rule 46 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
+    do              reduce using rule 46 (moveandjumpindir_def -> jumpindir DOSPUNTOS INTEGER COMMA CARDINAL .)
 
-    function_def                   shift and go to state 123
-    if_else_def                    shift and go to state 124
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
 
 state 123
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def . RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def . RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (47) moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .
 
-    RBRACKET        shift and go to state 125
+    RBRACKET        reduce using rule 47 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
+    SEMICOLON       reduce using rule 47 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
+    then            reduce using rule 47 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
+    do              reduce using rule 47 (moveandjumpindir_def -> jumpindir DOSPUNTOS ID COMMA CARDINAL .)
 
 
 state 124
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def . RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def . RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (50) goto_def -> goto DOSPUNTOS ID COMMA ID .
 
-    RBRACKET        shift and go to state 126
+    RBRACKET        reduce using rule 50 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
+    SEMICOLON       reduce using rule 50 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
+    then            reduce using rule 50 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
+    do              reduce using rule 50 (goto_def -> goto DOSPUNTOS ID COMMA ID .)
 
 
 state 125
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET . else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET . else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (52) goto_def -> goto DOSPUNTOS ID COMMA INTEGER .
 
-    else            shift and go to state 127
+    RBRACKET        reduce using rule 52 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
+    SEMICOLON       reduce using rule 52 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
+    then            reduce using rule 52 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
+    do              reduce using rule 52 (goto_def -> goto DOSPUNTOS ID COMMA INTEGER .)
 
 
 state 126
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET . else DOSPUNTOS LBRACKET function_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET . else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (51) goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .
 
-    else            shift and go to state 128
+    RBRACKET        reduce using rule 51 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
+    SEMICOLON       reduce using rule 51 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
+    then            reduce using rule 51 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
+    do              reduce using rule 51 (goto_def -> goto DOSPUNTOS INTEGER COMMA INTEGER .)
 
 
 state 127
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else . DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else . DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (53) goto_def -> goto DOSPUNTOS INTEGER COMMA ID .
 
-    DOSPUNTOS       shift and go to state 129
+    RBRACKET        reduce using rule 53 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
+    SEMICOLON       reduce using rule 53 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
+    then            reduce using rule 53 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
+    do              reduce using rule 53 (goto_def -> goto DOSPUNTOS INTEGER COMMA ID .)
 
 
 state 128
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else . DOSPUNTOS LBRACKET function_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else . DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET . if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    DOSPUNTOS       shift and go to state 130
+    if              shift and go to state 35
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
+    function_def                   shift and go to state 130
+    if_else_def                    shift and go to state 131
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 129
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS . LBRACKET function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS . LBRACKET if_else_def RBRACKET
+    (19) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET . function_def RBRACKET
+    (20) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET . if_else_def RBRACKET
+    (21) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET . while_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (19) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+    (20) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (21) while_def -> . while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
 
-    LBRACKET        shift and go to state 131
+    if              shift and go to state 35
+    while           shift and go to state 36
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
 
+    function_def                   shift and go to state 132
+    if_else_def                    shift and go to state 133
+    while_def                      shift and go to state 134
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
 
 state 130
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS . LBRACKET function_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS . LBRACKET if_else_def RBRACKET
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def . RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def . RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    LBRACKET        shift and go to state 132
+    RBRACKET        shift and go to state 135
 
 
 state 131
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET . function_def RBRACKET
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET . if_else_def RBRACKET
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (14) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def . RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def . RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    if              shift and go to state 34
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
+    RBRACKET        shift and go to state 136
 
-    function_def                   shift and go to state 133
-    if_else_def                    shift and go to state 134
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
 
 state 132
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET . function_def RBRACKET
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET . if_else_def RBRACKET
-    (18) function_def -> . assignTo_def
-    (19) function_def -> . put_def
-    (20) function_def -> . moveandjumptothe_def
-    (21) function_def -> . moveandjumpindir_def
-    (22) function_def -> . move_def
-    (23) function_def -> . goto_def
-    (24) function_def -> . turn_def
-    (25) function_def -> . face_def
-    (26) function_def -> . nop_def
-    (14) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
-    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
-    (27) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
-    (28) put_def -> . put DOSPUNTOS ID COMMA ITEMS
-    (29) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
-    (30) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
-    (31) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
-    (32) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
-    (33) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (34) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
-    (35) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
-    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
-    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
-    (40) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
-    (41) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (42) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
-    (43) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
-    (44) move_def -> . move DOSPUNTOS ID
-    (45) move_def -> . move DOSPUNTOS INTEGER
-    (46) goto_def -> . goto DOSPUNTOS ID COMMA ID
-    (47) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
-    (48) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
-    (49) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
-    (50) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
-    (51) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
-    (52) face_def -> . face DOSPUNTOS CARDINAL
-    (53) nop_def -> . nop DOSPUNTOS
-
-    if              shift and go to state 34
-    assignTo        shift and go to state 35
-    put             shift and go to state 36
-    pick            shift and go to state 37
-    movetothe       shift and go to state 38
-    jumptothe       shift and go to state 39
-    moveindir       shift and go to state 40
-    jumpindir       shift and go to state 41
-    move            shift and go to state 42
-    goto            shift and go to state 43
-    turn            shift and go to state 44
-    face            shift and go to state 45
-    nop             shift and go to state 46
-
-    function_def                   shift and go to state 135
-    if_else_def                    shift and go to state 136
-    assignTo_def                   shift and go to state 25
-    put_def                        shift and go to state 26
-    moveandjumptothe_def           shift and go to state 27
-    moveandjumpindir_def           shift and go to state 28
-    move_def                       shift and go to state 29
-    goto_def                       shift and go to state 30
-    turn_def                       shift and go to state 31
-    face_def                       shift and go to state 32
-    nop_def                        shift and go to state 33
-
-state 133
-
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def . RBRACKET
+    (19) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def . RBRACKET
 
     RBRACKET        shift and go to state 137
 
 
-state 134
+state 133
 
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def . RBRACKET
+    (20) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def . RBRACKET
 
     RBRACKET        shift and go to state 138
 
 
-state 135
+state 134
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def . RBRACKET
+    (21) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def . RBRACKET
 
     RBRACKET        shift and go to state 139
 
 
+state 135
+
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET . else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET . else DOSPUNTOS LBRACKET if_else_def RBRACKET
+
+    else            shift and go to state 140
+
+
 state 136
 
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def . RBRACKET
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET . else DOSPUNTOS LBRACKET function_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET . else DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    RBRACKET        shift and go to state 140
+    else            shift and go to state 141
 
 
 state 137
 
-    (14) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .
+    (19) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET .
 
-    RBRACKET        reduce using rule 14 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
-    SEMICOLON       reduce using rule 14 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+    RBRACKET        reduce using rule 19 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET .)
+    SEMICOLON       reduce using rule 19 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET .)
 
 
 state 138
 
-    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .
+    (20) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET .
 
-    RBRACKET        reduce using rule 16 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
-    SEMICOLON       reduce using rule 16 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+    RBRACKET        reduce using rule 20 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+    SEMICOLON       reduce using rule 20 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET .)
 
 
 state 139
 
-    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .
+    (21) while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET .
 
-    RBRACKET        reduce using rule 15 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
-    SEMICOLON       reduce using rule 15 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+    RBRACKET        reduce using rule 21 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET .)
+    SEMICOLON       reduce using rule 21 (while_def -> while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET .)
 
 
 state 140
 
-    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else . DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else . DOSPUNTOS LBRACKET if_else_def RBRACKET
 
-    RBRACKET        reduce using rule 17 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
-    SEMICOLON       reduce using rule 17 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+    DOSPUNTOS       shift and go to state 142
+
+
+state 141
+
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else . DOSPUNTOS LBRACKET function_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else . DOSPUNTOS LBRACKET if_else_def RBRACKET
+
+    DOSPUNTOS       shift and go to state 143
+
+
+state 142
+
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS . LBRACKET function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS . LBRACKET if_else_def RBRACKET
+
+    LBRACKET        shift and go to state 144
+
+
+state 143
+
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS . LBRACKET function_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS . LBRACKET if_else_def RBRACKET
+
+    LBRACKET        shift and go to state 145
+
+
+state 144
+
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET . function_def RBRACKET
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET . if_else_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
+
+    if              shift and go to state 35
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
+
+    function_def                   shift and go to state 146
+    if_else_def                    shift and go to state 147
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
+
+state 145
+
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET . function_def RBRACKET
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET . if_else_def RBRACKET
+    (22) function_def -> . assignTo_def
+    (23) function_def -> . put_def
+    (24) function_def -> . moveandjumptothe_def
+    (25) function_def -> . moveandjumpindir_def
+    (26) function_def -> . move_def
+    (27) function_def -> . goto_def
+    (28) function_def -> . turn_def
+    (29) function_def -> . face_def
+    (30) function_def -> . nop_def
+    (15) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (16) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
+    (17) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (18) if_else_def -> . if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
+    (31) assignTo_def -> . assignTo DOSPUNTOS INTEGER COMMA ID
+    (32) put_def -> . put DOSPUNTOS ID COMMA ITEMS
+    (33) put_def -> . put DOSPUNTOS INTEGER COMMA ITEMS
+    (34) put_def -> . pick DOSPUNTOS INTEGER COMMA ITEMS
+    (35) put_def -> . pick DOSPUNTOS ID COMMA ITEMS
+    (36) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA DIRECTION
+    (37) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (38) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA DIRECTION
+    (39) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA DIRECTION
+    (40) moveandjumptothe_def -> . movetothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (41) moveandjumptothe_def -> . movetothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (42) moveandjumptothe_def -> . jumptothe DOSPUNTOS INTEGER COMMA LEFTANDRIGHT
+    (43) moveandjumptothe_def -> . jumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT
+    (44) moveandjumpindir_def -> . moveindir DOSPUNTOS ID COMMA CARDINAL
+    (45) moveandjumpindir_def -> . moveindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (46) moveandjumpindir_def -> . jumpindir DOSPUNTOS INTEGER COMMA CARDINAL
+    (47) moveandjumpindir_def -> . jumpindir DOSPUNTOS ID COMMA CARDINAL
+    (48) move_def -> . move DOSPUNTOS ID
+    (49) move_def -> . move DOSPUNTOS INTEGER
+    (50) goto_def -> . goto DOSPUNTOS ID COMMA ID
+    (51) goto_def -> . goto DOSPUNTOS INTEGER COMMA INTEGER
+    (52) goto_def -> . goto DOSPUNTOS ID COMMA INTEGER
+    (53) goto_def -> . goto DOSPUNTOS INTEGER COMMA ID
+    (54) turn_def -> . turn DOSPUNTOS DIRECTION_TURN
+    (55) turn_def -> . turn DOSPUNTOS LEFTANDRIGHT
+    (56) face_def -> . face DOSPUNTOS CARDINAL
+    (57) nop_def -> . nop DOSPUNTOS
+
+    if              shift and go to state 35
+    assignTo        shift and go to state 37
+    put             shift and go to state 38
+    pick            shift and go to state 39
+    movetothe       shift and go to state 40
+    jumptothe       shift and go to state 41
+    moveindir       shift and go to state 42
+    jumpindir       shift and go to state 43
+    move            shift and go to state 44
+    goto            shift and go to state 45
+    turn            shift and go to state 46
+    face            shift and go to state 47
+    nop             shift and go to state 48
+
+    function_def                   shift and go to state 148
+    if_else_def                    shift and go to state 149
+    assignTo_def                   shift and go to state 26
+    put_def                        shift and go to state 27
+    moveandjumptothe_def           shift and go to state 28
+    moveandjumpindir_def           shift and go to state 29
+    move_def                       shift and go to state 30
+    goto_def                       shift and go to state 31
+    turn_def                       shift and go to state 32
+    face_def                       shift and go to state 33
+    nop_def                        shift and go to state 34
+
+state 146
+
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def . RBRACKET
+
+    RBRACKET        shift and go to state 150
+
+
+state 147
+
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def . RBRACKET
+
+    RBRACKET        shift and go to state 151
+
+
+state 148
+
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def . RBRACKET
+
+    RBRACKET        shift and go to state 152
+
+
+state 149
+
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def . RBRACKET
+
+    RBRACKET        shift and go to state 153
+
+
+state 150
+
+    (15) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .
+
+    RBRACKET        reduce using rule 15 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+    SEMICOLON       reduce using rule 15 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+
+
+state 151
+
+    (17) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .
+
+    RBRACKET        reduce using rule 17 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+    SEMICOLON       reduce using rule 17 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+
+
+state 152
+
+    (16) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .
+
+    RBRACKET        reduce using rule 16 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+    SEMICOLON       reduce using rule 16 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET .)
+
+
+state 153
+
+    (18) if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .
+
+    RBRACKET        reduce using rule 18 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
+    SEMICOLON       reduce using rule 18 (if_else_def -> if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET .)
 

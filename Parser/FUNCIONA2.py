@@ -34,7 +34,9 @@ tokens = (
     'nop',
     'if',
     'then',
-    'else'
+    'else',
+    'while',
+    'do'
 )
 
 global_variables = {}
@@ -74,6 +76,14 @@ def t_then(t):
 
 def t_else(t):
     r'(?i)else\b'
+    return t
+
+def t_while(t):
+    r'(?i)while\b'
+    return t
+
+def t_do(t):
+    r'(?i)do\b'
     return t
 
 def t_put(t):
@@ -229,6 +239,7 @@ def p_func_def(p):
     func_def : function_def
              | func_def SEMICOLON function_def
              | if_else_def
+             | while_def
     """
 
 def p_if_else_def(t):
@@ -236,6 +247,11 @@ def p_if_else_def(t):
                    | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET function_def RBRACKET
                    | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET function_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET
                    | if DOSPUNTOS function_def then DOSPUNTOS LBRACKET if_else_def RBRACKET else DOSPUNTOS LBRACKET if_else_def RBRACKET'''
+
+def p_while_def(t):
+    '''while_def : while DOSPUNTOS function_def do DOSPUNTOS LBRACKET function_def RBRACKET
+                 | while DOSPUNTOS function_def do DOSPUNTOS LBRACKET if_else_def RBRACKET
+                 | while DOSPUNTOS function_def do DOSPUNTOS LBRACKET while_def RBRACKET'''
 
 def p_functions_def(p):
     """function_def : assignTo_def
@@ -309,7 +325,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] "
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]]"
 
 lexer.input(data)
 
