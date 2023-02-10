@@ -49,7 +49,8 @@ tokens = (
 )
 
 global_variables = {}
-
+funciones = {}
+resultados =[]
 
 
 def t_ROBOT_R(t):
@@ -265,24 +266,29 @@ def p_bloque_def(p):
 
 def p_id_def(p):
     '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET'''
-    if len(p) == 8:
-        p[0] = (p[3], p[5])
-    else:
-        p[0] = (p[3], p[5], p[9])
-
+    funciones[p[1]] = p[4]
 def p_id_func(p):
     '''id_func : ID
                | ID COMMA id_func
                | 
     '''
     if len(p) == 2:
-        p[0] = [p[1]]
+        p[0] = 1
     elif len(p) == 4:
-        p[0] = [p[1]] + p[3]
+        p[0] = 1 + p[3]
+
+def p_estructura_def(p):
+    '''estructura_def : ID DOSPUNTOS INTEGER COMMA INTEGER '''
+    if p[1] not in funciones:
+        p_error(p)
+    else:
+        p[0] = p[1]
 
 def p_final_def(p):
-    '''final_def : ID DOSPUNTOS INTEGER COMMA INTEGER 
-                 | final_def ID DOSPUNTOS INTEGER COMMA INTEGER '''
+    '''final_def : estructura_def
+                 | final_def estructura_def '''
+    
+
 
 def p_func_def(p):
     """
@@ -422,7 +428,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] repeata[||repeat: not [nop:]][JUAN:1,2 man:3,2]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] repeata[||repeat: not [nop:]][gowest:1,2 mama:3,2]"
 
 lexer.input(data)
 
@@ -436,7 +442,8 @@ while True:
 result = parser.parse(data)
 print(result)
 print(global_variables)
-
+print(funciones)
+print(resultados)
 if success:
     print("True")
 else:
