@@ -31,7 +31,10 @@ tokens = (
     'goto',
     'turn',
     'face',
-    'nop'
+    'nop',
+    'if',
+    'else',
+    'then'
 )
 
 global_variables = {}
@@ -59,6 +62,19 @@ def t_assignTo(t):
 def t_ITEMS(t):
     r'(?i)chips\b|balloons\b'
     return t
+
+def t_if(t):
+    r'(?i)if\b'
+    return t
+
+def t_else(t):
+    r'(?i)else\b'
+    return t
+
+def t_then(t):
+    r'(?i)then\b'
+    return t
+
 
 def t_put(t):
     r'(?i)put\b'
@@ -195,7 +211,8 @@ def p_bloque_def(p):
                   | bloque_def id_def"""
 
 def p_id_def(p):
-    '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET'''
+    '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET
+              | ID LBRACKET PLECA id_func PLECA if_else_def RBRACKET'''
     if len(p) == 8:
         p[0] = (p[3], p[5])
     else:
@@ -219,6 +236,14 @@ def p_func_def(p):
              | func_def SEMICOLON function_def
     """
 
+def p_then_block(p):
+    '''then_block : LBRACKET func_def RBRACKET
+                  | LBRACKET if_else_def RBRACKET'''
+
+def p_if_else_def(p):
+    '''if_else_def : if DOSPUNTOS function_def then DOSPUNTOS then_block
+                   | if DOSPUNTOS function_def then DOSPUNTOS then_block else DOSPUNTOS then_block'''
+
 
 def p_functions_def(p):
     """function_def : assignTo_def
@@ -230,6 +255,8 @@ def p_functions_def(p):
                     | turn_def
                     | face_def
                     | nop_def"""
+
+
 
 def p_assignTo_def(p):
     'assignTo_def : assignTo DOSPUNTOS INTEGER COMMA ID'
@@ -290,7 +317,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\nassigntoCB[| | move: 1]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ | | if : MoveInDir : 1 , west then: [ MoveInDir : 1 ,west ] else : [nop :] ]"
 
 lexer.input(data)
 
