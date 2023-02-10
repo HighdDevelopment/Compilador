@@ -418,7 +418,7 @@ def p_canmoveandjumptothe_def(p):
                | canjumptothe DOSPUNTOS ID COMMA LEFTANDRIGHT """   
 
 def p_not_def(p):
-    """not_def : not """
+    """not_def : not DOSPUNTOS conditions_def"""
 
 success = True
 
@@ -428,7 +428,10 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] repeata[||repeat: not [nop:]][gowest:1,2 mama:3,2]"
+#data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] mama[ |ab,sz| while:not do:[while: not do:[nop:]]] repeata[||repeat: not [nop:]][gowest:1,2 mama:3,2]"
+
+with open("test.txt", "r") as file:
+    data = file.read()
 
 lexer.input(data)
 
