@@ -330,7 +330,7 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]] [JUAN:1,2]"
+data = "ROBOT_R\nVARS nAm, y, z,arroz;\nPROCS\ngoWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] gaWest [ |a,b|if: nop: then: [if: nop: then: [nop:] else: [nop:]] else: [if: nop: then: [nop:] else: [nop:]]] mama[ |ab,sz| while: nop: do:[while: nop: do:[nop:]]] [JUAN:1,2 man:3,2a]"
 
 lexer.input(data)
 
