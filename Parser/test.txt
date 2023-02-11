@@ -1,7 +1,12 @@
 ROBOT_R
-VARS nAm, y, z,arroz;
+VARS nom , x , y , one ;
 PROCS
-goWest [ |a,b| assignTo : 1 , y ; put : c , chips ; put : b , balloons] 
-gaWest [ |a,b|if:  canMovetothe : 1 , left then: [if: not then: [nop:] else: [nop:]] else: [if: not then: [nop:] else: [nop:]]] 
-mama[ |ab,sz| while:not do:[while: not do:[nop:]]] 
-repeata[||repeat: not [nop:]][gowest:1,2 mama:3,2]
+putCB [ |c , b | assignto : 1 , one ; put : c , chips ; put : b , balloons ]
+goNorth [| | while : canmovetothe : 1 , left do: [ moveindir : 1 , north ]]
+goWest [ | | if : canmoveindir : 1 , west then: [ moveindir : 1 , west ] else : nop : ]
+[
+goNorth : 3 , 3 ;
+putcb : 2 ,1
+]
+
+
