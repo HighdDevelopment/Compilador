@@ -2,6 +2,11 @@ import ply.lex as lex
 import ply.yacc as yacc
 import re 
 
+'''
+EN CASO DE EJECUTAR Y QUE EL PROGRAMA NO FUNCIONE, REVISE SI ESTA EN LA CARPETA PARSER
+EN CAsO DE QUE NO, BASTA CON ESCRIBIR EN LA CONSOLA cd parser
+'''
+
 
 tokens = (
     'ROBOT_R',
@@ -241,10 +246,13 @@ lexer = lex.lex()
 
 
 def p_prog(p):
-    '''prog : ROBOT_R var_def PROCS
+    '''prog : ROBOT_R var_def bloque_def
             | ROBOT_R var_def PROCS bloque_def
-            | ROBOT_R var_def PROCS bloque_def LBRACKET final_def RBRACKET'''
+            | ROBOT_R var_def PROCS bloque_def LBRACKET final_def RBRACKET
+            | ROBOT_R PROCS bloque_def
+            | ROBOT_R bloque_def'''
     p[0] = p[2]
+
 
 def p_var_def(p):
     'var_def : VARS ID_list SEMICOLON'
@@ -267,6 +275,7 @@ def p_bloque_def(p):
 def p_id_def(p):
     '''id_def : ID LBRACKET PLECA id_func PLECA func_def RBRACKET'''
     funciones[p[1]] = p[4]
+    
 def p_id_func(p):
     '''id_func : ID
                | ID COMMA id_func
@@ -284,9 +293,16 @@ def p_estructura_def(p):
     else:
         p[0] = p[1]
 
+def p_estruc_otra_def(p):
+    '''estruc_otra_def : cuerpo_def
+                       | estructura_def'''
+
+def p_cuerpo_def(p):
+    '''cuerpo_def : function_def'''
+
 def p_final_def(p):
-    '''final_def : estructura_def
-                 | final_def estructura_def '''
+    '''final_def : estruc_otra_def
+                 | final_def estruc_otra_def '''
     
 
 
@@ -434,19 +450,20 @@ with open("test.txt", "r") as file:
     data = file.read()
 
 lexer.input(data)
-
+'''
+Si quieres visualizar la estructura de los tokens solo debes usar
+el while de aqui abajo:
+'''
+'''
 while True:
     tok = lexer.token()
     if not tok:
         break
     print(tok)
 
-
+'''
 result = parser.parse(data)
-print(result)
-print(global_variables)
-print(funciones)
-print(resultados)
+
 if success:
     print("True")
 else:
